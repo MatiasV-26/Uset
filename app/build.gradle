@@ -12,6 +12,10 @@ apply plugin: 'com.google.gms.google-services'
 android {
     compileSdk 32
 
+    viewBinding{
+        enabled = true
+    }
+
     defaultConfig {
         applicationId "pe.edu.ulima.pm.uset"
         minSdk 26
