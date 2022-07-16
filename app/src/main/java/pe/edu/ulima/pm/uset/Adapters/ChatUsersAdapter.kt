@@ -5,32 +5,38 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.auth.User
 import pe.edu.ulima.pm.uset.Models.UserChat
 import pe.edu.ulima.pm.uset.R
+import pe.edu.ulima.pm.uset.databinding.ListChatBinding
 
-class ChatUsersAdapter: RecyclerView.Adapter<ChatUsersAdapter.ChatUsersHolder>() {
+class ChatUsersAdapter(val chatSelected : (UserChat)->Unit): RecyclerView.Adapter<ChatUsersHolder>() {
 
-    class ChatUsersHolder(itemView: View):RecyclerView.ViewHolder(itemView)
+    var a = UserChat("SADADada","ASDADASDAS", listOf("Persona1","Persona2"))
+    var b = UserChat("SADADada","ASDADASDAS", listOf("Persona2","Persona3"))
 
-    fun setData(list:List<UserChat>){
-        listUserChats = list
-        notifyDataSetChanged()
-    }
+    var chatList : List<UserChat> = listOf(a,b)
 
-    val a = UserChat("sdadasdadad","dadadasda",["Persona1","Persona2"])
-
-    var listUserChats : List<UserChat> = emptyList()
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatUsersHolder {
-        return ChatUsersHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_chat,parent,false))
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ChatUsersHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        return ChatUsersHolder(layoutInflater.inflate(R.layout.list_chat
+            ,parent,
+            false))
     }
 
     override fun onBindViewHolder(holder: ChatUsersHolder, position: Int) {
+        val chat = chatList[position]
 
+        holder.render(chat)
+
+        holder.itemView.setOnClickListener{
+            chatSelected(chat)
+        }
     }
 
-    override fun getItemCount(): Int {
-        return listUserChats.size
-    }
+    override fun getItemCount(): Int = chatList.size
 
 }
