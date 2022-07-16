@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "19597165712",
+    "project_id": "uset-a72e2",
+    "storage_bucket": "uset-a72e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19597165712:android:6420be49c3fe85c194c415",
+        "android_client_info": {
+          "package_name": "pe.edu.ulima.pm.uset"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "19597165712-3u45anosu4i2rhp55ofo9opi9k07rv1r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbNowWtG4d7hYECczemG6sajOOVi1-cR8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "19597165712-3u45anosu4i2rhp55ofo9opi9k07rv1r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
