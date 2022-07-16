@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import pe.edu.ulima.pm.uset.R
 import pe.edu.ulima.pm.uset.databinding.FragmentChatListUsersBinding
+import pe.edu.ulima.pm.uset.databinding.FragmentCreateProfile01Binding
 
 class ChatListUsers : Fragment() {
 
@@ -21,9 +22,12 @@ class ChatListUsers : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentChatListUsersBinding.inflate(inflater,container,false)
-        val view = binding.root
-        return view
+        _binding = FragmentChatListUsersBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
