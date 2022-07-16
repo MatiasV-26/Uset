@@ -8,6 +8,8 @@
         <entry key="..\:/TempTrabajo/Uset/app/src/main/res/layout/list_chat.xml" value="0.25" />
         <entry key="..\:/Users/Matias/Documents/2022-1/ProgramacionMovil/Uset/app/src/main/res/layout/activity_login.xml" value="0.3625" />
         <entry key="..\:/Users/Matias/Documents/2022-1/ProgramacionMovil/Uset/app/src/main/res/layout/fragment_login02.xml" value="0.3625" />
+        <entry key="app/src/main/res/drawable/ic_baseline_mail_24.xml" value="0.181" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.21600375284072526" />
         <entry key="app/src/main/res/layout/fragment_create_profile01.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_create_profile02.xml" value="0.14387031408308004" />
         <entry key="app/src/main/res/layout/fragment_create_profile03.xml" value="0.14387031408308004" />
@@ -20,5 +22,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.22188722914543718" />
+      </ProjectState>
+    </option>
   </component>
 </project>
