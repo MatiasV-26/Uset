@@ -5,10 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import pe.edu.ulima.pm.uset.R
+import pe.edu.ulima.pm.uset.databinding.FragmentCreateProfile01Binding
 import pe.edu.ulima.pm.uset.databinding.FragmentCreateProfile03Binding
 
-class CreateFile03Fragment : Fragment() {
-
+class CreateProfile03Fragment : Fragment() {
 
     private var _binding: FragmentCreateProfile03Binding? = null
     // This property is only valid between onCreateView and
@@ -32,4 +33,5 @@ class CreateFile03Fragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
