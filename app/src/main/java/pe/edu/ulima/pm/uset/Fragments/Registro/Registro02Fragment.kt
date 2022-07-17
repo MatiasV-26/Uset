@@ -1,10 +1,12 @@
 package pe.edu.ulima.pm.uset.Fragments.Registro
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import pe.edu.ulima.pm.uset.R
 import pe.edu.ulima.pm.uset.databinding.FragmentRegistro01Binding
@@ -28,10 +30,21 @@ class Registro02Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentRegistro02Binding.inflate(inflater, container, false)
-        var correo = binding.tilCorreoEditText.text
         binding.btnEnviar.setOnClickListener {
+            var correo = binding.tilCorreoEditText.text.toString()
+            var pswrd = "123"
+            Log.i("aa", correo.toString())
             if(correo!!.isNotEmpty()){
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(correo.toString(), "123")
+                Toast.makeText(context, correo, Toast.LENGTH_SHORT).show()
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(correo, pswrd)
+                    .addOnCompleteListener {
+                        if (it.isSuccessful){
+                            Log.i("Enviado", "Enviado")
+                        }else{
+                            Log.i("Error", "Error")
+                        }
+                    }
+
             }
         }
         return binding.root
