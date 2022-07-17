@@ -34,4 +34,5 @@ class RegistroActivity : AppCompatActivity() {
             .addToBackStack("dasdasd")
             .commit()
     }
+
 }

@@ -8,7 +8,7 @@
     tools:context=".Fragments.Registro.Registro02Fragment">
 
     <TextView
-        android:id="@+id/tv_ValidarCorreo"
+        android:id="@+id/tv_ValidarContraseña"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
         android:fontFamily="@font/bebasneue_regular"
 
         android:gravity="center"
-        android:text="Validar Correo"
+        android:text="Contraseña"
         android:textSize="50sp"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
         />
 
     <TextView
-        android:id="@+id/tv_ingresarCorreoElectronico"
+        android:id="@+id/tv_ingresarContraseña"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,27 +38,27 @@
         android:fontFamily="@font/rubik_variablefont_wght"
 
         android:gravity="start"
-        android:text="Ingresar código de verificación"
+        android:text="Ingresar contraseña"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_ValidarCorreo" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_ValidarContraseña" />
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_correo"
+        android:id="@+id/til_contraseña"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
         android:textSize="16sp"
-        android:hint="Ingresar código de verificación"
+        android:hint="Escriba la nueva contraseña"
         android:gravity="start"
         android:fontFamily="@font/rubik_variablefont_wght"
 
-        app:startIconDrawable="@drawable/ic_baseline_mail_24"
-        android:inputType="textEmailAddress"
+        app:startIconDrawable="@drawable/ic_baseline_vpn_key_24"
+        android:inputType="textPassword"
 
-        app:layout_constraintTop_toBottomOf="@id/tv_ingresarCorreoElectronico"
+        app:layout_constraintTop_toBottomOf="@id/tv_ingresarContraseña"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
@@ -68,7 +68,7 @@
         app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
         >
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/til_correoEditText"
+            android:id="@+id/til_contraseñaEditText"
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,6 +76,57 @@
 
             />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_ingresarContraseña2"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="16dp"
+
+        android:fontFamily="@font/rubik_variablefont_wght"
+        android:gravity="start"
+        android:text="Repita contraseña"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_contraseña" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_contraseña2"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:textSize="16sp"
+        android:hint="Repita contraseña"
+        android:gravity="start"
+        android:fontFamily="@font/rubik_variablefont_wght"
+
+        app:startIconDrawable="@drawable/ic_baseline_vpn_key_24"
+        android:inputType="textPassword"
+
+        app:layout_constraintTop_toBottomOf="@id/tv_ingresarContraseña2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="5dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/til_contraseña2EditText"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_variablefont_wght"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_enviar"
 
