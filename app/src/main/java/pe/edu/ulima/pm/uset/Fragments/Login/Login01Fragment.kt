@@ -68,7 +68,7 @@ class Login01Fragment : Fragment() {
     }
     private fun TVCrearUnaCuenta() {
         startActivity(Intent(requireActivity(), RegistroActivity::class.java))
-    }
+}                                                               //DONE
 
     private fun updateUI() {
         Toast.makeText(context, "FUNCION UPDATE UI > " + auth.currentUser.toString(), Toast.LENGTH_SHORT).show()
@@ -78,18 +78,8 @@ class Login01Fragment : Fragment() {
     override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        if(currentUser != null){
-            Toast.makeText(context, "YA HAY UN USUARIO ACTUALMENTE EN LA APLICACION" + auth.currentUser.toString(), Toast.LENGTH_SHORT).show()
-            reload();
-        }
+        updateUI()
     }
-
-    //TODO: onStart Functions **********************************************************************
-    private fun reload() {
-
-    }
-    //TODO: onStart Functions **********************************************************************
 
     override fun onDestroyView() {
         super.onDestroyView()
