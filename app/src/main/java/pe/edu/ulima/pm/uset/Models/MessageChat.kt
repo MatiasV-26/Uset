@@ -2,7 +2,7 @@ package pe.edu.ulima.pm.uset.Models
 
 import java.util.*
 
-data class Message (
+data class MessageChat (
     var content: String ="",
     var fromID: String = "",
     var date: Date = Date()
