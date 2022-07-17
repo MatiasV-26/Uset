@@ -11,11 +11,11 @@
         <entry key="app/src/main/res/drawable/ic_baseline_mail_24.xml" value="0.181" />
         <entry key="app/src/main/res/layout/activity_chat.xml" value="0.12092391304347826" />
         <entry key="app/src/main/res/layout/activity_create_profile.xml" value="0.12092391304347826" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.21600375284072526" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_create_profile01.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_create_profile02.xml" value="0.14387031408308004" />
         <entry key="app/src/main/res/layout/fragment_create_profile03.xml" value="0.14387031408308004" />
-        <entry key="app/src/main/res/layout/fragment_login01.xml" value="0.3319746376811594" />
+        <entry key="app/src/main/res/layout/fragment_login01.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_registro01.xml" value="0.22" />
       </map>
     </option>

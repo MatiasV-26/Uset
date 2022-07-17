@@ -44,7 +44,7 @@ tools:context=".Fragments.Login.Login01Fragment">
         android:layout_height="wrap_content"
 
         android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="10dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/rubik_variablefont_wght"
         android:gravity="start"
 
@@ -109,7 +109,7 @@ tools:context=".Fragments.Login.Login01Fragment">
         app:layout_constraintBottom_toTopOf="@id/til_IngresarContrasenaLayout"
 
         android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="10dp"
+        android:layout_marginTop="10dp"
         />
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_IngresarContrasenaLayout"
@@ -144,26 +144,27 @@ tools:context=".Fragments.Login.Login01Fragment">
 
             />
     </com.google.android.material.textfield.TextInputLayout>
+
     <TextView
         android:id="@+id/tv_olvideMiContrasena"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:text="Olvide mi contraseña"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="5dp"
         android:fontFamily="@font/rubik_variablefont_wght"
         android:gravity="start"
 
-        app:layout_constraintTop_toBottomOf="@id/til_IngresarContrasenaLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btn_ingresar"
+        android:text="Olvide mi contraseña"
+        android:textColor="#021638"
 
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="5dp"
-        />
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@id/btn_ingresar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_IngresarContrasenaLayout" />
 
     <!--            BOTONES              -->
     <com.google.android.material.button.MaterialButton
@@ -186,26 +187,27 @@ tools:context=".Fragments.Login.Login01Fragment">
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="10dp"
         />
+
     <TextView
         android:id="@+id/tv_ingresarConOtros"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:text="O ingresar con"
-        android:fontFamily="@font/rubik_variablefont_wght"
-        android:gravity="center_horizontal"
-
-        app:layout_constraintTop_toBottomOf="@id/btn_ingresar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/cl_layout"
-
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="5dp"
-        />
+        android:fontFamily="@font/rubik_variablefont_wght"
+
+        android:gravity="center_horizontal"
+        android:text="O ingresar con"
+        android:textColor="#021638"
+        android:textSize="16sp"
+
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@id/cl_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_ingresar" />
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_layout"
         android:layout_width="match_parent"
@@ -251,26 +253,27 @@ tools:context=".Fragments.Login.Login01Fragment">
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:id="@+id/tv_crearUnaCuenta"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:text="Crear una cuenta"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="5dp"
         android:fontFamily="@font/rubik_variablefont_wght"
         android:gravity="center_horizontal"
 
-        app:layout_constraintTop_toBottomOf="@id/cl_layout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Crear una cuenta"
+        android:textColor="#021638"
+        android:textSize="16sp"
 
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="5dp"
-        />
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

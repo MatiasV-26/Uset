@@ -2,7 +2,9 @@ package pe.edu.ulima.pm.uset
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import pe.edu.ulima.pm.uset.Fragments.Chats.ChatListUsers
+import pe.edu.ulima.pm.uset.Fragments.Login.Login01Fragment
 import pe.edu.ulima.pm.uset.databinding.ActivityChatBinding
 import pe.edu.ulima.pm.uset.databinding.ActivityCreateProfileBinding
 import pe.edu.ulima.pm.uset.databinding.ActivityLoginBinding
@@ -11,8 +13,10 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityLoginBinding
 
-    val fragmentManager = supportFragmentManager
-    val fragmentTransaction = fragmentManager.beginTransaction()
+    private val fragmentManager = supportFragmentManager
+    private val fragmentTransaction = fragmentManager.beginTransaction()
+
+    private val fragmentLoginList: List<Fragment> = listOf(Login01Fragment())
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,10 +24,14 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        title = "LOGIN ACTIVITY"
+        title = "...USET..."
 
+        SetFragmentTransactionInTop(0)
+    }
+
+    private fun SetFragmentTransactionInTop(fragment: Int) {
         fragmentTransaction
-            .add(R.id.fragmentContainerViewChats, ChatListUsers(),"1")
+            .add(R.id.fragmentContainerViewLogin, fragmentLoginList[0],"1")
             .addToBackStack("dasdasd")
             .commit()
     }
