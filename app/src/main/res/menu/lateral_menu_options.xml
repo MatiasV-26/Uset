@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/add_friend"
+            android:title="@string/draw_menu_add" />
+        <item
+            android:id="@+id/add_msg_fav"
+            android:title="@string/draw_menu_fav" />
+        <item
+            android:id="@+id/fastchat"
+            android:title="@string/draw_menu_fastchat" />
+    </group>
+
+    <group android:id="@+id/settings_items"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/settings"
+            android:title="@string/draw_menu_sett" />
+        <item
+            android:id="@+id/logout"
+            android:title="@string/draw_menu_logout" />
+    </group>
+
+
+
+
+</menu>
