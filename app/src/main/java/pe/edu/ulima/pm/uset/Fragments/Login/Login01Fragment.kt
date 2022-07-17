@@ -46,7 +46,7 @@ class Login01Fragment : Fragment() {
         val password = binding.tilIngresarContrasenaEditText.text.toString()
         if (email.isNotEmpty() && password.isNotEmpty()){
             auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(activity!!){
+                .addOnCompleteListener(requireActivity()){
                 if(it.isSuccessful) {
                     Toast.makeText(context, "LAS CREDENCIALES SON CORRECTAS", Toast.LENGTH_SHORT)
                         .show()

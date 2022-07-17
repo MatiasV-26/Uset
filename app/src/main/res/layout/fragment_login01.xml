@@ -141,7 +141,7 @@ tools:context=".Fragments.Login.Login01Fragment">
         >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/til_IngresarContrasenaEditText"
-
+            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/rubik_variablefont_wght"
