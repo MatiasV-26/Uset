@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,10 +33,8 @@ class Registro02Fragment : Fragment() {
         val email = binding.tilCorreoEditText.text.toString().trim { it <= ' ' }
         //val password = binding.tilIngresarContrasenaEditText.text.toString()
         val password = "123"
-        lifecycleScope.launch(Dispatchers.Main){
-            if (FirebaseClass.createUserWithEmailAndPassword(email,password,requireActivity(),requireContext())){
-                startActivity(Intent(requireActivity(), CreateProfile01Fragment::class.java))
-            }
+        if (FirebaseClass.createUserWithEmailAndPassword(email,password,requireActivity(),requireContext())){
+            startActivity(Intent(requireActivity(), CreateProfile01Fragment::class.java))
         }
     }
     //TODO: OnViewCreated Functions ****************************************************************
