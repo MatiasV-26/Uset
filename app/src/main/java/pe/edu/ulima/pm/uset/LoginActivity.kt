@@ -32,7 +32,6 @@ class LoginActivity : AppCompatActivity() {
     private fun SetFragmentTransactionInTop(fragment: Int) {
         fragmentTransaction
             .add(R.id.fragmentContainerViewLogin, fragmentLoginList[fragment],"1")
-            .addToBackStack("dasdasd")
             .commit()
     }
 
