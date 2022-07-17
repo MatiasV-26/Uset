@@ -51,13 +51,13 @@ tools:context=".Fragments.Login.Login01Fragment">
         android:text="Ingresar correo electronico"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/til_IngresarCorreoElectronicoLayout"
+        app:layout_constraintBottom_toTopOf="@id/til_correo"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_ingresar" />
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_IngresarCorreoElectronicoLayout"
+        android:id="@+id/til_correo"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -81,7 +81,7 @@ tools:context=".Fragments.Login.Login01Fragment">
         app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
         >
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/til_IngresarCorreoElectronicoEditText"
+            android:id="@+id/til_correoEditText"
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -103,7 +103,7 @@ tools:context=".Fragments.Login.Login01Fragment">
         android:fontFamily="@font/rubik_variablefont_wght"
         android:gravity="start"
 
-        app:layout_constraintTop_toBottomOf="@id/til_IngresarCorreoElectronicoLayout"
+        app:layout_constraintTop_toBottomOf="@id/til_correo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/til_IngresarContrasenaLayout"

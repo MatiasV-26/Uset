@@ -25,6 +25,8 @@ class CreateProfile02Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCreateProfile02Binding.inflate(inflater, container, false)
+        binding
+
         return binding.root
     }
 
@@ -32,5 +34,6 @@ class CreateProfile02Fragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 
 }
