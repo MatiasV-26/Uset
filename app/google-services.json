@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "19597165712-gl5gk7aqab0ipoh0b4qv75kjfd76onr1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pe.edu.ulima.pm.uset",
+            "certificate_hash": "8789fd6bf43bdec2c562df5d48e271a43440d632"
+          }
+        },
+        {
           "client_id": "19597165712-3u45anosu4i2rhp55ofo9opi9k07rv1r.apps.googleusercontent.com",
           "client_type": 3
         }

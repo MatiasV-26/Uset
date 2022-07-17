@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import pe.edu.ulima.pm.uset.databinding.FragmentLogin01Binding
 
 class Login01Fragment : Fragment() {
@@ -37,8 +38,20 @@ class Login01Fragment : Fragment() {
         Toast.makeText(context, "Implementacion futura ...", Toast.LENGTH_SHORT).show()
     }
     private fun BtnIngresar() {
-        Toast.makeText(context, binding.tilCorreoEditText.text.toString(),Toast.LENGTH_SHORT).show()
-        Toast.makeText(context, binding.tilIngresarContrasenaEditText.text.toString(),Toast.LENGTH_SHORT).show()
+        if (binding.tilCorreoEditText.text.toString().isNotEmpty()
+            &&
+            binding.tilIngresarContrasenaEditText.text.toString().isNotEmpty()){
+            FirebaseAuth.getInstance().signInWithEmailAndPassword(
+                binding.tilCorreoEditText.text.toString(),
+                binding.tilIngresarContrasenaEditText.text.toString()
+            ).addOnCompleteListener{
+                if(it.isSuccessful){
+                    Toast.makeText(context, "LAS CREDENCIALES SON CORRECTAS", Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(context, "LAS CREDENCIALES SON MALAS :(", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
     private fun BtnFacebook() {
         Toast.makeText(context, "BtnFacebook", Toast.LENGTH_SHORT).show()
