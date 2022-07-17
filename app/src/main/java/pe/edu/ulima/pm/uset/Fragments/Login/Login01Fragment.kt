@@ -1,5 +1,6 @@
 package pe.edu.ulima.pm.uset.Fragments.Login
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import pe.edu.ulima.pm.uset.RegistroActivity
 import pe.edu.ulima.pm.uset.databinding.FragmentLogin01Binding
 
 class Login01Fragment : Fragment() {
@@ -50,12 +51,11 @@ class Login01Fragment : Fragment() {
                 if(it.isSuccessful) {
                     Toast.makeText(context, "LAS CREDENCIALES SON CORRECTAS", Toast.LENGTH_SHORT)
                         .show()
-                    val user = auth.currentUser
-                    updateUI(user)
+                    updateUI()
                 }else {
                     Toast.makeText(context, "LAS CREDENCIALES SON MALAS :(", Toast.LENGTH_SHORT)
                         .show()
-                    updateUI(null)
+                    updateUI()
                 }
             }
         }
@@ -67,11 +67,11 @@ class Login01Fragment : Fragment() {
         Toast.makeText(context, "BtnGoogle", Toast.LENGTH_SHORT).show()
     }
     private fun TVCrearUnaCuenta() {
-        Toast.makeText(context, "TVCrearUnaCuenta", Toast.LENGTH_SHORT).show()
+        startActivity(Intent(requireActivity(), RegistroActivity::class.java))
     }
 
-    private fun updateUI(user: FirebaseUser?) {
-        Toast.makeText(context, user.toString(), Toast.LENGTH_SHORT).show()
+    private fun updateUI() {
+        Toast.makeText(context, "FUNCION UPDATE UI > " + auth.currentUser.toString(), Toast.LENGTH_SHORT).show()
     }
     //TODO: onViewCreated Functions ****************************************************************
 
@@ -80,6 +80,7 @@ class Login01Fragment : Fragment() {
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         if(currentUser != null){
+            Toast.makeText(context, "YA HAY UN USUARIO ACTUALMENTE EN LA APLICACION" + auth.currentUser.toString(), Toast.LENGTH_SHORT).show()
             reload();
         }
     }
