@@ -18,20 +18,13 @@ import pe.edu.ulima.pm.uset.ChatActivity
 class FirebaseClass {
     companion object{
         val auth =  Firebase.auth
-        fun createUserWithEmailAndPassword(email:String,password:String,activity:Activity,context:Context):Boolean{
+        fun createUserWithEmailAndPassword(email:String,password:String,context:Context): Task<AuthResult>? {
             var registered = false
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 if(password.length<6){
                     Toast.makeText(context, "La contraseña debe tener 6 caracteres a más", Toast.LENGTH_SHORT).show()
                 }else{
-                    auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(activity) {
-                        if (it.isSuccessful){
-                            Toast.makeText(context, "Registrado!", Toast.LENGTH_SHORT).show()
-                            registered = true
-                        }else{
-                            Toast.makeText(context, "Ingrese una contraseña", Toast.LENGTH_SHORT).show()
-                        }
-                    }
+                    return auth.createUserWithEmailAndPassword(email, password)
                 }
             }else{
                 if (email.isEmpty())
@@ -39,9 +32,9 @@ class FirebaseClass {
                 else
                     Toast.makeText(context, "Ingrese una contraseña", Toast.LENGTH_SHORT).show()
             }
-            return registered
+            return null
         }
-        fun signInWithEmailAndPassword(email:String, password:String, activity: Activity, context: Context): Task<AuthResult>? {
+        fun signInWithEmailAndPassword(email:String, password:String, context: Context): Task<AuthResult>? {
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 return auth.signInWithEmailAndPassword(email, password)
             }

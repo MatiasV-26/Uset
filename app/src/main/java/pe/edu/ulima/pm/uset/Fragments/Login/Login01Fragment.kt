@@ -40,7 +40,7 @@ class Login01Fragment : Fragment() {
     private fun BtnIngresar() {
         val email = binding.tilCorreoEditText.text.toString().trim { it <= ' ' }
         val password = binding.tilIngresarContrasenaEditText.text.toString()
-        FirebaseClass.signInWithEmailAndPassword(email,password,requireActivity(),requireContext())?.addOnCompleteListener(requireActivity()) {
+        FirebaseClass.signInWithEmailAndPassword(email,password,requireContext())?.addOnCompleteListener(requireActivity()) {
             FirebaseClass.updateUI(requireContext())
             if (it.isSuccessful){
                 startActivity(Intent(requireActivity(), ChatActivity::class.java))
