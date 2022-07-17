@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import pe.edu.ulima.pm.uset.ChatActivity
 import pe.edu.ulima.pm.uset.RegistroActivity
 import pe.edu.ulima.pm.uset.databinding.FragmentLogin01Binding
@@ -35,8 +38,10 @@ class Login01Fragment : Fragment() {
     private fun BtnIngresar() {
         val email = binding.tilCorreoEditText.text.toString().trim { it <= ' ' }
         val password = binding.tilIngresarContrasenaEditText.text.toString()
-        if (FirebaseClass.signInWithEmailAndPassword(email,password,requireActivity(),requireContext())){
-            startActivity(Intent(requireActivity(), ChatActivity::class.java))
+        lifecycleScope.launch(Dispatchers.Main){
+            if (FirebaseClass.signInWithEmailAndPassword(email,password,requireActivity(),requireContext())){
+                startActivity(Intent(requireActivity(), ChatActivity::class.java))
+            }
         }
     }
     private fun BtnFacebook() {
