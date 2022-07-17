@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -38,9 +40,13 @@ class Login01Fragment : Fragment() {
     private fun BtnIngresar() {
         val email = binding.tilCorreoEditText.text.toString().trim { it <= ' ' }
         val password = binding.tilIngresarContrasenaEditText.text.toString()
-        lifecycleScope.launch(Dispatchers.Main){
-            if (FirebaseClass.signInWithEmailAndPassword(email,password,requireActivity(),requireContext())){
+        FirebaseClass.signInWithEmailAndPassword(email,password,requireContext())?.addOnCompleteListener(requireActivity()) {
+            FirebaseClass.updateUI(requireContext())
+            if (it.isSuccessful){
                 startActivity(Intent(requireActivity(), ChatActivity::class.java))
+            }
+            else {
+                Toast.makeText(context, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -52,7 +58,7 @@ class Login01Fragment : Fragment() {
     }
     private fun TVCrearUnaCuenta() {
         startActivity(Intent(requireActivity(), RegistroActivity::class.java))
-}                                                               //DONE
+    }                                                               //DONE
     //TODO: onViewCreated Functions ****************************************************************
 
     override fun onStart() {

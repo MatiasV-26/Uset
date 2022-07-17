@@ -7,6 +7,8 @@ import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.lifecycleScope
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
@@ -16,20 +18,13 @@ import pe.edu.ulima.pm.uset.ChatActivity
 class FirebaseClass {
     companion object{
         val auth =  Firebase.auth
-        suspend fun createUserWithEmailAndPassword(email:String,password:String,activity:Activity,context:Context):Boolean{
+        fun createUserWithEmailAndPassword(email:String,password:String,context:Context): Task<AuthResult>? {
             var registered = false
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 if(password.length<6){
                     Toast.makeText(context, "La contraseña debe tener 6 caracteres a más", Toast.LENGTH_SHORT).show()
                 }else{
-                    auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(activity) {
-                        if (it.isSuccessful){
-                            Toast.makeText(context, "Registrado!", Toast.LENGTH_SHORT).show()
-                            registered = true
-                        }else{
-                            Toast.makeText(context, "Ingrese una contraseña", Toast.LENGTH_SHORT).show()
-                        }
-                    }
+                    return auth.createUserWithEmailAndPassword(email, password)
                 }
             }else{
                 if (email.isEmpty())
@@ -37,19 +32,11 @@ class FirebaseClass {
                 else
                     Toast.makeText(context, "Ingrese una contraseña", Toast.LENGTH_SHORT).show()
             }
-            return registered
+            return null
         }
-        suspend fun signInWithEmailAndPassword(email:String, password:String, activity: Activity, context: Context):Boolean{
-            var accessed = false
+        fun signInWithEmailAndPassword(email:String, password:String, context: Context): Task<AuthResult>? {
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(activity) {
-                    if (it.isSuccessful) {
-                        accessed = true
-                    } else {
-                        Toast.makeText(context, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
-                    }
-                    updateUI(context)
-                }
+                return auth.signInWithEmailAndPassword(email, password)
             }
             else{
                 if (email.isEmpty())
@@ -57,7 +44,7 @@ class FirebaseClass {
                 else
                     Toast.makeText(context, "Ingrese una contraseña", Toast.LENGTH_SHORT).show()
             }
-            return accessed
+            return null
         }
         fun updateUI(context:Context){
             val user = auth.currentUser
