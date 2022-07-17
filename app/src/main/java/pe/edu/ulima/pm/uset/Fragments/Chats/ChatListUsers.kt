@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import pe.edu.ulima.pm.uset.Adapters.ChatUsersAdapter
 import pe.edu.ulima.pm.uset.Models.UserChat
@@ -56,5 +58,16 @@ class ChatListUsers : Fragment() {
     private fun chatPressed(userchat: UserChat) {
         val idchat = userchat.id
         val user = "ADSADA"
+
+        parentFragmentManager.setFragmentResult("idChat"
+            , bundleOf("idChat" to idchat))
+        parentFragmentManager.setFragmentResult("user"
+            , bundleOf("user" to user))
+
+        parentFragmentManager.beginTransaction()
+            .add(R.id.fragmentContainerViewChats,ChatBtwUsers(),"chats")
+            .addToBackStack("2")
+            .hide(parentFragmentManager.findFragmentByTag("listUsers")!!)
+            .commit()
     }
 }

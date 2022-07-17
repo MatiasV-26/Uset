@@ -7,7 +7,7 @@ import pe.edu.ulima.pm.uset.databinding.ActivityChatBinding
 
 class ChatActivity : AppCompatActivity() {
 
-private lateinit var binding: ActivityChatBinding
+    private lateinit var binding: ActivityChatBinding
 
     val fragmentManager = supportFragmentManager
     val fragmentTransaction = fragmentManager.beginTransaction()
@@ -22,8 +22,8 @@ private lateinit var binding: ActivityChatBinding
         title = "Chats"
 
         fragmentTransaction
-            .add(R.id.fragmentContainerViewChats,ChatListUsers(),"1")
-            .addToBackStack("dasdasd")
+            .add(R.id.fragmentContainerViewChats,ChatListUsers(),"listUsers")
+            .addToBackStack("listUsers")
             .commit()
     }
 }

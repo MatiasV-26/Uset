@@ -3,6 +3,7 @@ package pe.edu.ulima.pm.uset
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import pe.edu.ulima.pm.uset.Fragments.Chats.ChatListUsers
+import pe.edu.ulima.pm.uset.Fragments.Login.Login01Fragment
 import pe.edu.ulima.pm.uset.databinding.ActivityChatBinding
 import pe.edu.ulima.pm.uset.databinding.ActivityCreateProfileBinding
 import pe.edu.ulima.pm.uset.databinding.ActivityLoginBinding
@@ -23,8 +24,7 @@ class LoginActivity : AppCompatActivity() {
         title = "LOGIN ACTIVITY"
 
         fragmentTransaction
-            .add(R.id.fragmentContainerViewChats, ChatListUsers(),"1")
-            .addToBackStack("dasdasd")
+            .add(R.id.fragmentContainerViewLogin, Login01Fragment(),"1")
             .commit()
     }
 

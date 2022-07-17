@@ -3,20 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/TempTrabajo/Uset/app/src/main/res/layout/activity_chat.xml" value="0.358695652173913" />
+        <entry key="..\:/TempTrabajo/Uset/app/src/main/res/layout/activity_create_profile.xml" value="0.358695652173913" />
+        <entry key="..\:/TempTrabajo/Uset/app/src/main/res/layout/activity_login.xml" value="0.3625" />
+        <entry key="..\:/TempTrabajo/Uset/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
+        <entry key="..\:/TempTrabajo/Uset/app/src/main/res/layout/chat_users.xml" value="0.5" />
+        <entry key="..\:/TempTrabajo/Uset/app/src/main/res/layout/content_chat.xml" value="0.3484375" />
+        <entry key="..\:/TempTrabajo/Uset/app/src/main/res/layout/fragment_chat_between_users.xml" value="0.1" />
+        <entry key="..\:/TempTrabajo/Uset/app/src/main/res/layout/fragment_chat_list_users.xml" value="0.33" />
         <entry key="..\:/TempTrabajo/Uset/app/src/main/res/layout/fragment_chat_list_usuarios.xml" value="0.358695652173913" />
+        <entry key="..\:/TempTrabajo/Uset/app/src/main/res/layout/fragment_create_profile01.xml" value="0.358695652173913" />
+        <entry key="..\:/TempTrabajo/Uset/app/src/main/res/layout/fragment_first.xml" value="0.3484375" />
         <entry key="..\:/TempTrabajo/Uset/app/src/main/res/layout/fragment_registro01.xml" value="0.1762917933130699" />
-        <entry key="..\:/TempTrabajo/Uset/app/src/main/res/layout/list_chat.xml" value="0.25" />
+        <entry key="..\:/TempTrabajo/Uset/app/src/main/res/layout/fragment_registro03.xml" value="0.358695652173913" />
+        <entry key="..\:/TempTrabajo/Uset/app/src/main/res/layout/list_chat.xml" value="0.67" />
         <entry key="..\:/Users/Matias/Documents/2022-1/ProgramacionMovil/Uset/app/src/main/res/layout/activity_login.xml" value="0.3625" />
         <entry key="..\:/Users/Matias/Documents/2022-1/ProgramacionMovil/Uset/app/src/main/res/layout/fragment_login02.xml" value="0.3625" />
-        <entry key="app/src/main/res/drawable/ic_baseline_mail_24.xml" value="0.181" />
-        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.12092391304347826" />
-        <entry key="app/src/main/res/layout/activity_create_profile.xml" value="0.12092391304347826" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.21600375284072526" />
-        <entry key="app/src/main/res/layout/fragment_create_profile01.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_create_profile02.xml" value="0.14387031408308004" />
-        <entry key="app/src/main/res/layout/fragment_create_profile03.xml" value="0.14387031408308004" />
-        <entry key="app/src/main/res/layout/fragment_login01.xml" value="0.3319746376811594" />
-        <entry key="app/src/main/res/layout/fragment_registro01.xml" value="0.22" />
       </map>
     </option>
   </component>
@@ -25,12 +27,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.22188722914543718" />
-      </ProjectState>
-    </option>
   </component>
 </project>
