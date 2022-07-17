@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import pe.edu.ulima.pm.uset.ChatActivity
 import pe.edu.ulima.pm.uset.Fragments.CreateProfile.CreateProfile01Fragment
 import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
@@ -29,8 +32,10 @@ class Registro02Fragment : Fragment() {
         val email = binding.tilCorreoEditText.text.toString().trim { it <= ' ' }
         //val password = binding.tilIngresarContrasenaEditText.text.toString()
         val password = "123"
-        if (FirebaseClass.createUserWithEmailAndPassword(email,password,requireActivity(),requireContext())){
-            startActivity(Intent(requireActivity(), CreateProfile01Fragment::class.java))
+        lifecycleScope.launch(Dispatchers.Main){
+            if (FirebaseClass.createUserWithEmailAndPassword(email,password,requireActivity(),requireContext())){
+                startActivity(Intent(requireActivity(), CreateProfile01Fragment::class.java))
+            }
         }
     }
     //TODO: OnViewCreated Functions ****************************************************************

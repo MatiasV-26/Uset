@@ -2,14 +2,21 @@ package pe.edu.ulima.pm.uset.Fragments.Login
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat.startActivity
+import androidx.lifecycle.lifecycleScope
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import pe.edu.ulima.pm.uset.ChatActivity
 
 class FirebaseClass {
     companion object{
         val auth =  Firebase.auth
-        fun createUserWithEmailAndPassword(email:String,password:String,activity:Activity,context:Context):Boolean{
+        suspend fun createUserWithEmailAndPassword(email:String,password:String,activity:Activity,context:Context):Boolean{
             var registered = false
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 if(password.length<6){
@@ -32,10 +39,10 @@ class FirebaseClass {
             }
             return registered
         }
-        fun signInWithEmailAndPassword(email:String, password:String, activity: Activity, context: Context):Boolean{
+        suspend fun signInWithEmailAndPassword(email:String, password:String, activity: Activity, context: Context):Boolean{
             var accessed = false
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                FirebaseClass.auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(activity) {
+                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(activity) {
                     if (it.isSuccessful) {
                         accessed = true
                     } else {
