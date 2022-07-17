@@ -12,10 +12,12 @@ import pe.edu.ulima.pm.uset.databinding.ListChatBinding
 
 class ChatUsersAdapter(val chatSelected : (UserChat)->Unit): RecyclerView.Adapter<ChatUsersHolder>() {
 
-    var a = UserChat("SADADada","ASDADASDAS", listOf("Persona1","Persona2"))
-    var b = UserChat("SADADada","ASDADASDAS", listOf("Persona2","Persona3"))
+    var chatList : List<UserChat> = listOf()
 
-    var chatList : List<UserChat> = listOf(a,b)
+    fun setData(listChat: List<UserChat>){
+        chatList = listChat
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,

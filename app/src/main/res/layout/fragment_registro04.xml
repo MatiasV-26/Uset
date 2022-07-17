@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.CreateProfile.CreateProfile01Fragment">
+    tools:context=".Fragments.Registro.Registro04Fragment">
 
     <TextView
         android:id="@+id/tv_ValidarContraseña"
@@ -28,7 +28,7 @@
         />
 
     <TextView
-        android:id="@+id/tv_nombres"
+        android:id="@+id/tv_ingresarContraseña"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
         android:fontFamily="@font/rubik_variablefont_wght"
 
         android:gravity="start"
-        android:text="Nombres"
+        android:text="Ingresar contraseña"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,13 +51,14 @@
         android:layout_height="wrap_content"
 
         android:textSize="16sp"
-        android:hint="Ingrese nombres"
+        android:hint="Escriba la nueva contraseña"
         android:gravity="start"
         android:fontFamily="@font/rubik_variablefont_wght"
 
+        app:startIconDrawable="@drawable/ic_baseline_vpn_key_24"
         android:inputType="textPassword"
 
-        app:layout_constraintTop_toBottomOf="@id/tv_nombres"
+        app:layout_constraintTop_toBottomOf="@id/tv_ingresarContraseña"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
@@ -77,7 +78,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/tv_apellidos"
+        android:id="@+id/tv_ingresarContraseña2"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -87,7 +88,7 @@
 
         android:fontFamily="@font/rubik_variablefont_wght"
         android:gravity="start"
-        android:text="Apellidos"
+        android:text="Repita contraseña"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -100,13 +101,14 @@
         android:layout_height="wrap_content"
 
         android:textSize="16sp"
-        android:hint="Ingrese apelldios"
+        android:hint="Repita contraseña"
         android:gravity="start"
         android:fontFamily="@font/rubik_variablefont_wght"
 
+        app:startIconDrawable="@drawable/ic_baseline_vpn_key_24"
         android:inputType="textPassword"
 
-        app:layout_constraintTop_toBottomOf="@id/tv_apellidos"
+        app:layout_constraintTop_toBottomOf="@id/tv_ingresarContraseña2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
@@ -125,108 +127,8 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/tv_sexo"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_marginHorizontal="20dp"
-
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/rubik_variablefont_wght"
-        android:gravity="start"
-        android:text="Sexo"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_contraseña2" />
-
-    <com.google.android.material.button.MaterialButtonToggleGroup
-
-        android:id="@+id/btn_sexo"
-
-        app:singleSelection="true"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_sexo">
-        <Button
-            android:id="@+id/btn_hombre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hombre"
-            style="?attr/materialButtonOutlinedStyle"/>
-        <Button
-            android:id="@+id/btn_mujer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mujer"
-            style="?attr/materialButtonOutlinedStyle"/>
-        <Button
-            android:id="@+id/btn_otro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Otro"
-            style="?attr/materialButtonOutlinedStyle"/>
-
-    </com.google.android.material.button.MaterialButtonToggleGroup>
-    <TextView
-        android:id="@+id/tv_ocupacion"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_marginHorizontal="20dp"
-
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/rubik_variablefont_wght"
-        android:gravity="start"
-        android:text="Ocupación"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_sexo" />
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_ocupacion"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:textSize="16sp"
-        android:hint="Ingrese apelldios"
-        android:gravity="start"
-        android:fontFamily="@font/rubik_variablefont_wght"
-
-        android:inputType="textPassword"
-
-        app:layout_constraintTop_toBottomOf="@id/tv_ocupacion"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="5dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/til_ocupacionEditText"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/rubik_variablefont_wght"
-
-            />
-    </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_siguiente"
+        android:id="@+id/btn_enviar"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -244,7 +146,28 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/til_ocupacion" />
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_regresar"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginBottom="56dp"
+        android:fontFamily="@font/bebasneue_regular"
+
+        android:gravity="center"
+        android:text="Regresar"
+        android:textSize="32dp"
+
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_enviar"
+        app:layout_constraintVertical_bias="0.0"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,9 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObjects
+import com.google.firebase.ktx.Firebase
 import pe.edu.ulima.pm.uset.Adapters.ChatUsersAdapter
 import pe.edu.ulima.pm.uset.Models.UserChat
 import pe.edu.ulima.pm.uset.R
@@ -20,6 +23,8 @@ class ChatListUsers : Fragment() {
     private var _binding : FragmentChatListUsersBinding? = null
     private val binding get() = _binding!!
     private lateinit var thisContext : Context
+    private val db = Firebase.firestore
+    private var userID = "y5Rfs1mv7JRptMxLD5y0L0Qgb4y1"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,27 +52,30 @@ class ChatListUsers : Fragment() {
     }
 
     private fun initRecyclerView(){
+
         val manager = LinearLayoutManager(thisContext)
         binding.recyclerViewChatsUsers.layoutManager = manager
         binding.recyclerViewChatsUsers.adapter =
             ChatUsersAdapter{
                 chat -> chatPressed(chat)
             }
+
+        val userDoc = db.collection("users").document(userID)
+
+        userDoc.collection("chats").get()
+            .addOnSuccessListener {
+                val chatList = it.toObjects(UserChat::class.java)
+
+                (binding.recyclerViewChatsUsers.adapter as ChatUsersAdapter).setData(chatList)
+            }
+
     }
 
     private fun chatPressed(userchat: UserChat) {
-        val idchat = userchat.id
-        val user = "ADSADA"
-
-        parentFragmentManager.setFragmentResult("idChat"
-            , bundleOf("idChat" to idchat))
-        parentFragmentManager.setFragmentResult("user"
-            , bundleOf("user" to user))
 
         parentFragmentManager.beginTransaction()
-            .add(R.id.fragmentContainerViewChats,ChatBtwUsers(),"chats")
+            .replace(R.id.fragmentContainerViewChats,ChatBtwUsers(),"chats")
             .addToBackStack("2")
-            .hide(parentFragmentManager.findFragmentByTag("listUsers")!!)
             .commit()
     }
 }

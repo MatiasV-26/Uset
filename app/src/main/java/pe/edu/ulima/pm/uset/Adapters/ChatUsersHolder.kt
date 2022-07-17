@@ -10,9 +10,9 @@ class ChatUsersHolder(view:View) :RecyclerView.ViewHolder(view){
     val binding = ListChatBinding.bind(view)
 
     fun render(chat: UserChat){
-        binding.textNombreUsuarioChat.text = chat.users[1]
-        binding.textUltimoChatHora.text = "HH:MM"
-        binding.textUltimoChat.text = "XDDDDDDDDDDDDDD"
+        binding.textNombreUsuarioChat.text = chat.name
+        binding.textUltimoChatHora.text = "TODO"
+        binding.textUltimoChat.text = "TODO"
         binding.imageView.setImageResource(R.drawable.download)
     }
 }

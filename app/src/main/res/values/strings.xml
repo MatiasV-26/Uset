@@ -8,7 +8,13 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
+    <string name="draw_menu_add">Agregar Amigos</string>
+    <string name="draw_menu_fav">Mensajes Favoritos</string>
+    <string name="draw_menu_fastchat">Chats Rápidos</string>
+    <string name="draw_menu_sett">Configuración</string>
+    <string name="draw_menu_logout">Cerrar Sesión</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="drawer_open">drawer open</string>
+    <string name="drawer_close">drawer close</string>
 </resources>
