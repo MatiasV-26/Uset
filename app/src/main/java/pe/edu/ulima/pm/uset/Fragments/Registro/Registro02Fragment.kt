@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import pe.edu.ulima.pm.uset.R
@@ -38,45 +39,45 @@ class Registro02Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentRegistro02Binding.inflate(inflater, container, false)
-        binding.btnEnviar.setOnClickListener {
-            var correo = binding.tilCorreoEditText.text.toString()
-            var pswrd = "123"
-            Log.i("aa", correo)
-            if(correo!!.isNotEmpty()){
-                Toast.makeText(context, correo, Toast.LENGTH_SHORT).show()
-                // [START create_user_with_email]
-                auth.createUserWithEmailAndPassword(correo, pswrd)
-                    .addOnCompleteListener(requireActivity()) {
-                        if (it.isSuccessful){
-                            Log.i("Enviado", "Enviado")
-                        }else{
-                            Log.i("Error", correo)
-                            Log.i("Error2", pswrd)
-                        }
-                    }
-
-            }
-        }
+        binding.btnEnviar.setOnClickListener { Registrar() }
         return binding.root
     }
     // [START on_start_check_user]
-    public override fun onStart() {
+    override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        if(currentUser != null){
-            reload();
-        }
+        updateUI()
+    }
+    private fun Registrar(){
+        var correo = binding.tilCorreoEditText.text.toString()
+        var pswrd = "1234567"
+        Log.i("aa", correo)
+        auth.createUserWithEmailAndPassword(correo, pswrd)
+            .addOnCompleteListener(requireActivity()) {
+                if (it.isSuccessful){
+                    Log.i("Enviado", "Hola")
+                    updateUI()
+                    BotonEnviar()
+                }else{
+                    Log.i("Error", correo)
+                    Log.i("Error2", pswrd)
+                    updateUI()
+                }
+            }
     }
 
-    private fun reload() {
-
-    }
-    // [END on_start_check_user]
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
+    private fun updateUI() {
+        Toast.makeText(context, "FUNCION UPDATE UI > " + auth.currentUser.toString(), Toast.LENGTH_SHORT).show()
+    }
+    private fun BotonEnviar() {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerViewRegistro, Registro03Fragment(),"registro 3")
+            .addToBackStack("3")
+            .commit()
+    }
 }
