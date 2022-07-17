@@ -55,16 +55,18 @@ class ChatBtwUsers : Fragment(){
 
     private fun pressedSend() {
         val text = binding.editTextMessageText.text.toString()
-        val msg = MessageChat(
-            text,
-            userId,
-        )
-        db.collection("chatRooms")
-            .document(chatId).collection("messages")
-            .document()
-            .set(msg)
+        if(text!="") {
+            val msg = MessageChat(
+                text,
+                userId,
+            )
+            db.collection("chatRooms")
+                .document(chatId).collection("messages")
+                .document()
+                .set(msg)
 
-        binding.editTextMessageText.setText("")
+            binding.editTextMessageText.setText("")
+        }
     }
 
     private fun establishTitle(){
