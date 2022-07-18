@@ -7,7 +7,7 @@ import pe.edu.ulima.pm.uset.Fragments.Login.Login01Fragment
 import pe.edu.ulima.pm.uset.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
-    //VIEW BINDING FOR ACTIVITIES
+    //VIEW BINDING FOR ACTIVITIESs
     private lateinit var binding : ActivityLoginBinding
     //FRAGMENT MANAGEMENT
     private val fragmentManager = supportFragmentManager
