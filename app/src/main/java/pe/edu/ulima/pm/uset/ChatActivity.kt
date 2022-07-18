@@ -14,6 +14,8 @@ import com.google.firebase.ktx.Firebase
 import pe.edu.ulima.pm.uset.Fragments.AddFriends.AddFriendFragment
 import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
 import pe.edu.ulima.pm.uset.databinding.ActivityChatBinding
+import pe.edu.ulima.pm.uset.databinding.Toolbarchat01Binding
+import pe.edu.ulima.pm.uset.toolbar.ToolbarChat01
 
 class ChatActivity : AppCompatActivity() {
 
@@ -26,6 +28,7 @@ class ChatActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ToolbarChat01().show(this,"Chats",true,binding.tbToolbarchat01.mtToolbarlogin)
 
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
