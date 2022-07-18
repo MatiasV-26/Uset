@@ -21,7 +21,8 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         //TITLE
-        title = "...USET..."
+        binding.tbToolbarlogin.mtToolbarlogin.title = "...USET.."
+        setSupportActionBar(binding.tbToolbarlogin.mtToolbarlogin)
         //FRAGMENT MANAGEMENT
         SetFragmentTransactionInConstant(0)
     }
