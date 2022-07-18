@@ -1,10 +1,13 @@
 package pe.edu.ulima.pm.uset.Fragments.CreateProfile
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import pe.edu.ulima.pm.uset.ChatActivity
+import pe.edu.ulima.pm.uset.R
 import pe.edu.ulima.pm.uset.databinding.FragmentCreateProfile02Binding
 
 class CreateProfile02Fragment : Fragment() {
@@ -29,10 +32,20 @@ class CreateProfile02Fragment : Fragment() {
 
         return binding.root
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.btnOmitir.setOnClickListener {
+            goToChatActivity()
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+    private fun goToChatActivity() {
+        requireActivity().finish()
+        startActivity(Intent(requireActivity(), ChatActivity::class.java))
     }
 
 

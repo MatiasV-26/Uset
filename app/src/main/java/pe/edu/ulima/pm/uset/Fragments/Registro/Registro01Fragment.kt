@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import pe.edu.ulima.pm.uset.Fragments.Chats.ChatBtwUsers
+import pe.edu.ulima.pm.uset.Fragments.CreateProfile.CreateProfile02Fragment
 import pe.edu.ulima.pm.uset.Models.UserChat
 import pe.edu.ulima.pm.uset.R
 import pe.edu.ulima.pm.uset.databinding.FragmentLogin01Binding
@@ -47,4 +48,5 @@ class Registro01Fragment : Fragment() {
             .addToBackStack("2")
             .commit()
     }
+
 }
