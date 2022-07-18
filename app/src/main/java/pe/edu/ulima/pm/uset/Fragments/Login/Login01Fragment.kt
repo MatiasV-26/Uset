@@ -23,7 +23,6 @@ class Login01Fragment : Fragment() {
     private val callBackManager = CallbackManager.Factory.create()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AppEventsLogger.activateApp(Application())
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentLogin01Binding.inflate(inflater, container, false)
@@ -59,7 +58,7 @@ class Login01Fragment : Fragment() {
     private fun BtnFacebook() {
         Toast.makeText(context, "BtnFacebook", Toast.LENGTH_SHORT).show()
         //TODO
-        //LoginManager.getInstance().logInWithReadPermissions(requireActivity(), listOf("email"))
+        LoginManager.getInstance().logInWithReadPermissions(requireActivity(), listOf("email"))
         LoginManager.getInstance().registerCallback(callBackManager,
             object: FacebookCallback<LoginResult>{
                 override fun onSuccess(result: LoginResult) {
