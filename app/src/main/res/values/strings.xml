@@ -18,7 +18,7 @@
     <string name="drawer_open">drawer open</string>
     <string name="drawer_close">drawer close</string>
 
-    <string name="facebook_app_id">22423921</string>
-    <string name="fb_login_protocol_scheme">fb22423921</string>
-    <string name="facebook_client_token">62585231</string>
+    <string name="facebook_app_id">2242392162585231</string>
+    <string name="fb_login_protocol_scheme">fb2242392162585231</string>
+    <string name="facebook_client_token">95726a23866d0ac78652feb9e1eb2458</string>
 </resources>
