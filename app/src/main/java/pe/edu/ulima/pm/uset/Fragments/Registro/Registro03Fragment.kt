@@ -7,8 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import io.grpc.util.AdvancedTlsX509TrustManager
+import pe.edu.ulima.pm.uset.Fragments.CreateProfile.CreateProfile01Fragment
+import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
 import pe.edu.ulima.pm.uset.R
+import pe.edu.ulima.pm.uset.RegistroActivity
 import pe.edu.ulima.pm.uset.databinding.FragmentRegistro02Binding
 import pe.edu.ulima.pm.uset.databinding.FragmentRegistro03Binding
 
@@ -20,7 +25,7 @@ class Registro03Fragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private lateinit var correo: String
+    val user = FirebaseClass.auth2.currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,19 +41,35 @@ class Registro03Fragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnEnviar.setOnClickListener { BotonEnviar() }
+        VerificacionCorreo()
+        binding.btnEnviar.setOnClickListener {
+            if (user != null) {
+                BotonEnviar()
+            }
+        }
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+    private fun VerificacionCorreo(){
+        user?.sendEmailVerification()?.addOnCompleteListener {
+            if (it.isSuccessful){
+                Toast.makeText(context, "Correo Enviado", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(context, "${it.exception?.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
     private fun BotonEnviar() {
         parentFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerViewRegistro, Registro04Fragment(),"registro 3")
-            .addToBackStack("3")
+            .replace(R.id.fragmentContainerViewRegistro, CreateProfile01Fragment(),"registro 4")
+            .addToBackStack("4")
             .commit()
     }
+
 
 
 }

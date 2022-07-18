@@ -19,6 +19,7 @@ class Registro04Fragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    val user = FirebaseClass.auth2.currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +50,7 @@ class Registro04Fragment : Fragment() {
             FirebaseClass.createUserWithEmailAndPassword(RegistroActivity.correo!!,password,requireContext())?.addOnCompleteListener(requireActivity()) {
                 if (it.isSuccessful){
                     Toast.makeText(context, "Registrado!", Toast.LENGTH_SHORT).show()
+                    BotonEnviar()
                 }else{
                     Toast.makeText(context, "Correo ya utilizado", Toast.LENGTH_SHORT).show()
                 }
@@ -62,6 +64,13 @@ class Registro04Fragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+    private fun BotonEnviar() {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerViewRegistro, Registro03Fragment(),"registro 3")
+            .addToBackStack("3")
+            .commit()
+    }
+
 
 
 }

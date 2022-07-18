@@ -49,7 +49,7 @@ class Registro02Fragment : Fragment() {
     private fun BotonEnviar() {
         RegistroActivity.correo = binding.tilCorreoEditText.text.toString().trim { it <= ' ' }
         parentFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerViewRegistro, Registro03Fragment(),"registro 3")
+            .replace(R.id.fragmentContainerViewRegistro, Registro04Fragment(),"registro 3")
             .addToBackStack("3")
             .commit()
     }

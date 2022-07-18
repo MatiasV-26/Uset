@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
@@ -20,6 +21,7 @@ import pe.edu.ulima.pm.uset.ChatActivity
 class FirebaseClass {
     companion object{
         val auth =  Firebase.auth
+        var auth2 = FirebaseAuth.getInstance()
         fun isVerifiedEmailAndSignInWithEmailAndPassword(email:String,password: String,context: Context):Task<AuthResult>?{
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 return auth.signInWithEmailAndPassword(email, password)
@@ -32,6 +34,7 @@ class FirebaseClass {
             }
             return null
         }
+
         fun createUserWithEmailAndPassword(email:String,password:String,context:Context): Task<AuthResult>? {
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 if(password.length<6){
@@ -47,11 +50,17 @@ class FirebaseClass {
             }
             return null
         }
+
+
+
         fun signInWithCredential(credential:AuthCredential,context:Context): Task<AuthResult>?{
             return auth.signInWithCredential(credential)
         }
         fun updateUI():String? {
             return auth.currentUser?.uid
+        }
+        fun UpdateAuth(){
+            auth2 = FirebaseAuth.getInstance()
         }
     }
 }
