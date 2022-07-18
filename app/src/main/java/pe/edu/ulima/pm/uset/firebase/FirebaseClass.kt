@@ -75,15 +75,15 @@ class FirebaseClass {
             return null
         }
 
-        fun signInWithCredential(
-            credential:AuthCredential,
-            context:Context
-        ): Task<AuthResult>?{
+        fun signInWithCredential(credential:AuthCredential,context:Context): Task<AuthResult>?{
             return auth.signInWithCredential(credential)
         }
 
         fun updateUI():String? {
             return auth.currentUser?.uid
+        }
+        fun Correo():String? {
+            return auth.currentUser?.email
         }
     }
 }

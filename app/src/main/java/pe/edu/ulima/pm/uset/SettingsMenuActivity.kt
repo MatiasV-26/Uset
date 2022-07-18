@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import pe.edu.ulima.pm.uset.Fragments.Settings.menu.SettingsMenuFragment
 import pe.edu.ulima.pm.uset.databinding.ActivitySettingsBinding
 
 class SettingsMenuActivity : AppCompatActivity() {
@@ -18,27 +19,13 @@ class SettingsMenuActivity : AppCompatActivity() {
 
         title = "Configuración"
 
-        binding.conlayOptionEditAccount.setOnClickListener{ }
-
-        binding.conlayOptionEditSecurity.setOnClickListener{ onPrivacySettingPressed() }
-
-        binding.conlayEditNotifications.setOnClickListener{ onNotificationSettingPressed() }
+        /*supportFragmentManager.beginTransaction()
+            .add(R.id.fcwSettingsMenu,SettingsMenuFragment())
+            .addToBackStack(null)
+            .commit()*/
     }
 
-    private fun onNotificationSettingPressed(){
-        if(binding.conlayActivateNotification.visibility == View.VISIBLE){
-            binding.ivSettingsNotificationArrow.rotation = 0F
-            binding.conlayActivateNotification.visibility = View.GONE
-        }else{
-            binding.ivSettingsNotificationArrow.rotation = 90F
-            binding.conlayActivateNotification.visibility = View.VISIBLE
-        }
-    }
 
-    private fun onPrivacySettingPressed(){
-        var intent = Intent(this,PrivacySettingsActivity::class.java)
-        startActivity(intent)
-    }
 
 
 

@@ -67,7 +67,7 @@
         app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
         >
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/til_contraseñaEditText"
+            android:id="@+id/til_nombreEditText"
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
         app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
         >
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/til_contraseña2EditText"
+            android:id="@+id/til_apellidosEditText"
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -146,10 +146,10 @@
 
     <com.google.android.material.button.MaterialButtonToggleGroup
 
-        android:id="@+id/btn_sexo"
+        android:id="@+id/btngrpSex"
 
         app:singleSelection="true"
-
+        app:checkedButton="@id/btnOtro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -157,22 +157,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_sexo">
         <Button
-            android:id="@+id/btn_hombre"
+            android:id="@+id/btnHombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hombre"
             style="?attr/materialButtonOutlinedStyle"/>
         <Button
-            android:id="@+id/btn_mujer"
+            android:id="@+id/btnMujer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mujer"
             style="?attr/materialButtonOutlinedStyle"/>
         <Button
-            android:id="@+id/btn_otro"
+            android:id="@+id/btnOtro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Otro"
+            android:text="Omitir"
             style="?attr/materialButtonOutlinedStyle"/>
 
     </com.google.android.material.button.MaterialButtonToggleGroup>
@@ -193,7 +193,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_sexo" />
+        app:layout_constraintTop_toBottomOf="@+id/btngrpSex" />
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_ocupacion"
 

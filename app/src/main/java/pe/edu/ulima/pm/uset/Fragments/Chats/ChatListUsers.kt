@@ -13,6 +13,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
 import pe.edu.ulima.pm.uset.Adapters.ChatUsersAdapter
+import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
 import pe.edu.ulima.pm.uset.Models.UserChat
 import pe.edu.ulima.pm.uset.R
 import pe.edu.ulima.pm.uset.databinding.FragmentChatListUsersBinding
@@ -24,7 +25,7 @@ class ChatListUsers : Fragment() {
     private val binding get() = _binding!!
     private lateinit var thisContext : Context
     private val db = Firebase.firestore
-    private var userID = "y5Rfs1mv7JRptMxLD5y0L0Qgb4y1"
+    private var userID = FirebaseClass.updateUI()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +61,7 @@ class ChatListUsers : Fragment() {
                 chat -> chatPressed(chat)
             }
 
-        val userDoc = db.collection("users").document(userID)
+        val userDoc = db.collection("users").document(userID!!)
 
         userDoc.collection("chats").get()
             .addOnSuccessListener {

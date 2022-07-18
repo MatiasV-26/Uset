@@ -5,17 +5,20 @@ import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import pe.edu.ulima.pm.uset.Fragments.AddFriends.AddFriendFragment
 import pe.edu.ulima.pm.uset.Fragments.Chats.ChatListUsers
 import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
+import pe.edu.ulima.pm.uset.Models.Usuario
 import pe.edu.ulima.pm.uset.databinding.ActivityChatBinding
 
 class ChatActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChatBinding
-
-    val fragmentManager = supportFragmentManager
-    var fragmentTransaction = fragmentManager.beginTransaction()
+    private val db = Firebase.firestore
+    private val fragmentManager = supportFragmentManager
+    private var fragmentTransaction = fragmentManager.beginTransaction()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,11 +37,6 @@ class ChatActivity : AppCompatActivity() {
         binding.drawerMenuLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-        fragmentTransaction
-            .add(R.id.fragmentContainerViewChats,ChatListUsers(),"listUsers")
-            .addToBackStack("listUsers")
-            .commit()
-
         binding.navView.setNavigationItemSelectedListener {
             it.setChecked(true)
             when(it.itemId){
@@ -50,6 +48,9 @@ class ChatActivity : AppCompatActivity() {
             binding.drawerMenuLayout.closeDrawer(GravityCompat.START)
             true
         }
+
+        //db.collection("usuarios").
+
     }
 
     private fun pressLogout() {
