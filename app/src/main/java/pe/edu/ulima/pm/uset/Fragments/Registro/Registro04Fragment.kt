@@ -46,27 +46,26 @@ class Registro04Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         VerificacionCorreo()
         binding.btnEnviar.setOnClickListener {
-            if (user != null) {
-                FirebaseClass
-                    .isVerifiedEmailAndSignInWithEmailAndPassword(
-                        RegistroActivity.correo!!,
-                        RegistroActivity.password!!,
-                        requireContext()
-                    )?.addOnCompleteListener(requireActivity()){
-                        if (it.isSuccessful){
-                            if(FirebaseClass.auth.currentUser!!.isEmailVerified) {
-                                Toast.makeText(context, "USUARIO VERIFICADO", Toast.LENGTH_SHORT).show()
-                                goToChatActivity()
-                            }else{
-                                Toast.makeText(context, "USUARIO NNOO VERIFICADO", Toast.LENGTH_SHORT).show()
-                                FirebaseClass.auth.currentUser!!.sendEmailVerification()
-                            }
-                            BotonEnviar()
+            Toast.makeText(context, "TOAST PADRE", Toast.LENGTH_SHORT).show()
+            FirebaseClass
+                .isVerifiedEmailAndSignInWithEmailAndPassword(
+                    RegistroActivity.correo!!,
+                    RegistroActivity.password!!,
+                    requireContext()
+                )?.addOnCompleteListener(requireActivity()){
+                    if (it.isSuccessful){
+                        if(FirebaseClass.auth.currentUser!!.isEmailVerified) {
+                            Toast.makeText(context, "USUARIO VERIFICADO", Toast.LENGTH_SHORT).show()
+                            goToChatActivity()
                         }else{
-                            Toast.makeText(context, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "USUARIO NNOO VERIFICADO", Toast.LENGTH_SHORT).show()
+                            FirebaseClass.auth.currentUser!!.sendEmailVerification()
                         }
+
+                    }else{
+                        Toast.makeText(context, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
                     }
-            }
+                }
         }
     }
     private fun goToChatActivity() {
@@ -87,13 +86,4 @@ class Registro04Fragment : Fragment() {
             }
         }
     }
-    private fun BotonEnviar() {
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerViewRegistro, CreateProfile01Fragment(),"registro 4")
-            .addToBackStack("4")
-            .commit()
-    }
-
-
-
 }

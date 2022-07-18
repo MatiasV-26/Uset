@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import pe.edu.ulima.pm.uset.R
 import pe.edu.ulima.pm.uset.RegistroActivity
 import pe.edu.ulima.pm.uset.databinding.FragmentRegistro02Binding
@@ -35,10 +36,15 @@ class Registro02Fragment : Fragment() {
         _binding = null
     }
     private fun BotonEnviar() {
-        RegistroActivity.correo = binding.tilCorreoEditText.text.toString().trim { it <= ' ' }
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerViewRegistro, Registro03Fragment(),"registro 3")
-            .addToBackStack("3")
-            .commit()
+        if(binding.tilCorreoEditText.text!!.isNotEmpty()){
+            RegistroActivity.correo = binding.tilCorreoEditText.text.toString().trim { it <= ' ' }
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainerViewRegistro, Registro03Fragment(),"registro 3")
+                .addToBackStack("3")
+                .commit()
+        }else{
+            Toast.makeText(context, "Ingrese su correo", Toast.LENGTH_SHORT).show()
+        }
+
     }
 }
