@@ -47,20 +47,27 @@ class Registro04Fragment : Fragment() {
         VerificacionCorreo()
         binding.btnEnviar.setOnClickListener {
             if (user != null) {
-                FirebaseClass.isVerifiedEmailAndSignInWithEmailAndPassword(RegistroActivity.correo!!,RegistroActivity.password!!,requireContext())?.addOnCompleteListener(requireActivity()){
-                    if (it.isSuccessful){
-                        if(FirebaseClass.auth.currentUser!!.isEmailVerified) {
-                            Toast.makeText(context, "UserVerified", Toast.LENGTH_SHORT).show()
-                            goToChatActivity()
+                FirebaseClass
+                    .isVerifiedEmailAndSignInWithEmailAndPassword(
+                        RegistroActivity.correo!!,
+                        RegistroActivity.password!!,
+                        requireContext()
+                    )?.addOnCompleteListener(requireActivity()){
+                        if (it.isSuccessful){
+                            Toast.makeText(requireContext(), "SI FUE VERIFICADO", Toast.LENGTH_SHORT).show()
+                            if(FirebaseClass.auth.currentUser!!.isEmailVerified) {
+                                Toast.makeText(context, "UserVerified", Toast.LENGTH_SHORT).show()
+                                goToChatActivity()
+                            }else{
+                                Toast.makeText(context, "Verifique su correo", Toast.LENGTH_SHORT).show()
+                                FirebaseClass.auth.currentUser!!.sendEmailVerification()
+                            }
+                            BotonEnviar()
                         }else{
-                            Toast.makeText(context, "Verifique su correo", Toast.LENGTH_SHORT).show()
-                            FirebaseClass.auth.currentUser!!.sendEmailVerification()
+                            Toast.makeText(requireContext(), "NO FUE VERIFICADO", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
                         }
-                        BotonEnviar()
-                    }else{
-                        Toast.makeText(context, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
                     }
-                }
             }
         }
     }

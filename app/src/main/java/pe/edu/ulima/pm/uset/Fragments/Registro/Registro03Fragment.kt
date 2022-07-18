@@ -43,7 +43,17 @@ class Registro03Fragment : Fragment() {
             Toast.makeText(context, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
         }else{
             RegistroActivity.password = password2
-            FirebaseClass.auth.signInWithEmailAndPassword(RegistroActivity.correo!!, password)
+            Toast.makeText(requireContext(), "ANTES DE SIGN IN", Toast.LENGTH_SHORT).show()
+            FirebaseClass.auth.createUserWithEmailAndPassword(RegistroActivity.correo!!, password).addOnCompleteListener {
+                if (it.isSuccessful){
+                    Toast.makeText(requireContext(), "ANTES DE ENVIAR CORREO", Toast.LENGTH_SHORT).show()
+                    FirebaseClass.auth.currentUser!!.sendEmailVerification()
+                }else
+                    Toast.makeText(requireContext(), "NADA :(", Toast.LENGTH_SHORT).show()
+
+            }
+            Toast.makeText(requireContext(), "DESPUES DE SIGN IN", Toast.LENGTH_SHORT).show()
+
             BotonEnviar()
         }
     }
