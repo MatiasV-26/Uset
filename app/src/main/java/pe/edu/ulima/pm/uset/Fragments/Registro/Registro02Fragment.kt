@@ -40,7 +40,7 @@ class Registro02Fragment : Fragment() {
     override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseClass.updateUI(requireContext())
+       // FirebaseClass.updateUI(requireContext())
     }
     override fun onDestroyView() {
         super.onDestroyView()

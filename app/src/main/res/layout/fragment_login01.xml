@@ -18,23 +18,22 @@ tools:context=".Fragments.Login.Login01Fragment">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:textSize="64sp"
-        android:text="Ingresar"
-        android:gravity="center"
-        android:fontFamily="@font/bebasneue_regular"
-
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tv_ingresarCorreoElectronico"
-
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="20dp"
+        android:fontFamily="@font/bebasneue_regular"
 
-        app:layout_constraintVertical_chainStyle="packed"
+        android:gravity="center"
+        android:text="Ingresar"
+        android:textSize="64sp"
+        app:layout_constraintBottom_toTopOf="@id/tv_ingresarCorreoElectronico"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
         app:layout_constraintVertical_bias="0.0"
-        />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <!--            CORREO ELECTRONICO              -->
     <TextView
@@ -176,20 +175,19 @@ tools:context=".Fragments.Login.Login01Fragment">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:textSize="32dp"
-        android:textStyle="bold"
-        android:text="Ingresar"
-        android:fontFamily="@font/bebasneue_regular"
-        android:gravity="center"
-
-        app:layout_constraintTop_toBottomOf="@id/tv_olvideMiContrasena"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tv_ingresarConOtros"
-
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="20dp"
-        />
+        android:fontFamily="@font/bebasneue_regular"
+        android:gravity="center"
+        android:text="Ingresar"
+
+        android:textSize="32dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/tv_ingresarConOtros"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_olvideMiContrasena" />
     <TextView
         android:id="@+id/tv_ingresarConOtros"
 

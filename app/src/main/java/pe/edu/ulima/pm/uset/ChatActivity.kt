@@ -1,7 +1,7 @@
 package pe.edu.ulima.pm.uset
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -42,6 +42,7 @@ class ChatActivity : AppCompatActivity() {
             it.setChecked(true)
             when(it.itemId){
                 R.id.add_friend ->pressAddFriend()
+                R.id.settings -> pressSettings()
             }
 
             binding.drawerMenuLayout.closeDrawer(GravityCompat.START)
@@ -49,14 +50,26 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
+    private fun pressSettings() {
+        var intent = Intent(this,SettingsMenuActivity::class.java)
+        startActivity(intent)
+    }
+
     private fun pressAddFriend(){
-        Log.d("adadasda",supportFragmentManager.primaryNavigationFragment.toString())
         fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction
             .replace(R.id.fragmentContainerViewChats,AddFriendFragment(),"addFriends")
             .addToBackStack("addFriendFragment")
             .commit()
         title = "Agregar amigos"
+    }
+
+    override fun onResume() {
+        super.onResume()
+        var a = binding.navView.checkedItem
+        if(a!=null){
+            a.setChecked(false)
+        }
     }
 
     override fun onBackPressed() {

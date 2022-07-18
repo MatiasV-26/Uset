@@ -43,7 +43,6 @@ class AddFriendFragment:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().title = "Añadir Amigos"
 
         db.collection("users").document(userID).get()
             .addOnSuccessListener { document ->

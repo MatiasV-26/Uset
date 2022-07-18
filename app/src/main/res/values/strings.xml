@@ -13,11 +13,16 @@
     <string name="draw_menu_fastchat">Chats Rápidos</string>
     <string name="draw_menu_sett">Configuración</string>
     <string name="draw_menu_logout">Cerrar Sesión</string>
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="drawer_open">drawer open</string>
     <string name="drawer_close">drawer close</string>
-
+    <string name="settings_option_account">Editar datos de cuenta</string>
+    <string name="settings_option_privacy">Privacidad</string>
+    <string name="settings_option_notifications">Notificaciones</string>
+    <string name="setting_activate_notification">Activar Notificaciones</string>
+    <string name="setting_show_info_options">Ocultar información personal</string>
+    <string name="settings_hide_toFriends">A amigos...</string>
+    <string name="settings_hide_toContacts">A contactos...</string>
+    <string name="settings_show_activity_state">Mostrar estado de actividad</string>
     <string name="facebook_app_id">2242392162585231</string>
     <string name="fb_login_protocol_scheme">fb2242392162585231</string>
     <string name="facebook_client_token">95726a23866d0ac78652feb9e1eb2458</string>
