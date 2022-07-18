@@ -10,6 +10,7 @@ data class Usuario (
     var sexo : String = "",
     var ocupacion : String = "",
     var friend_code : String = "",
+    var uri : String = "",
     var settingsBasicos : Map<String,Boolean> = mapOf(
         "notifications" to true,
         "estadoActividad" to true),
