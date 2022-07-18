@@ -20,6 +20,7 @@ class RegistroActivity : AppCompatActivity() {
 
     companion object{
         var correo : String? = null
+        var password : String? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
