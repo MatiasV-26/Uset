@@ -6,6 +6,7 @@
     android:id="@+id/mt_toolbarlogin"
     android:background="@color/main_orange"
     android:textAlignment="center"
-    app:titleTextColor="@color/white">
+    app:titleTextColor="@color/white"
+    android:theme="@style/ToolbarTheme">
 
 </com.google.android.material.appbar.MaterialToolbar>
