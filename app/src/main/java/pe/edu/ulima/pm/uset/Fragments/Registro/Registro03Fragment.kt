@@ -42,26 +42,10 @@ class Registro03Fragment : Fragment() {
         if (password != password2){
             Toast.makeText(context, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
         }else{
-            FirebaseClass.isVerifiedEmailAndSignInWithEmailAndPassword(RegistroActivity.correo!!,password,requireContext())?.addOnCompleteListener(requireActivity()){
-                if (it.isSuccessful){
-                    if(FirebaseClass.auth.currentUser!!.isEmailVerified) {
-                        Toast.makeText(context, "UserVerified", Toast.LENGTH_SHORT).show()
-                        goToChatActivity()
-                    }else{
-                        Toast.makeText(context, "Verifique su correo", Toast.LENGTH_SHORT).show()
-                        FirebaseClass.auth.currentUser!!.sendEmailVerification()
-                    }
-                    BotonEnviar()
-                }else{
-                    Toast.makeText(context, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
-                }
-            }
+            RegistroActivity.password = password2
+            FirebaseClass.auth.signInWithEmailAndPassword(RegistroActivity.correo!!, password)
+            BotonEnviar()
         }
-    }
-
-    private fun goToChatActivity() {
-        requireActivity().finish()
-        startActivity(Intent(requireActivity(), CreateProfileActivity::class.java))
     }
 
     //TODO: OnViewCreated Functions ****************************************************************

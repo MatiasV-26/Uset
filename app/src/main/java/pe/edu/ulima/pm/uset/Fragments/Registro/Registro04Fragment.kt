@@ -1,5 +1,6 @@
 package pe.edu.ulima.pm.uset.Fragments.Registro
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,10 +11,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import io.grpc.util.AdvancedTlsX509TrustManager
+import pe.edu.ulima.pm.uset.CreateProfileActivity
 import pe.edu.ulima.pm.uset.Fragments.CreateProfile.CreateProfile01Fragment
 import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
 import pe.edu.ulima.pm.uset.R
 import pe.edu.ulima.pm.uset.RegistroActivity
+import pe.edu.ulima.pm.uset.RegistroActivity.Companion.password
 import pe.edu.ulima.pm.uset.databinding.FragmentRegistro02Binding
 import pe.edu.ulima.pm.uset.databinding.FragmentRegistro03Binding
 
@@ -44,10 +47,26 @@ class Registro04Fragment : Fragment() {
         VerificacionCorreo()
         binding.btnEnviar.setOnClickListener {
             if (user != null) {
-                BotonEnviar()
+                FirebaseClass.isVerifiedEmailAndSignInWithEmailAndPassword(RegistroActivity.correo!!,RegistroActivity.password!!,requireContext())?.addOnCompleteListener(requireActivity()){
+                    if (it.isSuccessful){
+                        if(FirebaseClass.auth.currentUser!!.isEmailVerified) {
+                            Toast.makeText(context, "UserVerified", Toast.LENGTH_SHORT).show()
+                            goToChatActivity()
+                        }else{
+                            Toast.makeText(context, "Verifique su correo", Toast.LENGTH_SHORT).show()
+                            FirebaseClass.auth.currentUser!!.sendEmailVerification()
+                        }
+                        BotonEnviar()
+                    }else{
+                        Toast.makeText(context, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
         }
-
+    }
+    private fun goToChatActivity() {
+        requireActivity().finish()
+        startActivity(Intent(requireActivity(), CreateProfileActivity::class.java))
     }
 
     override fun onDestroyView() {
