@@ -28,10 +28,11 @@ class ChatActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ToolbarChat01().show(this,"Chats",true,binding.tbToolbarchat01.mtToolbarlogin)
 
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        ToolbarChat01().show(this,"Chats",true,binding.tbToolbarchat01.mtToolbarlogin)
 
         title = "Chats"
 
