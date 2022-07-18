@@ -43,11 +43,16 @@ class ChatActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.add_friend ->pressAddFriend()
                 R.id.settings -> pressSettings()
+                R.id.logout -> pressLogout()
             }
 
             binding.drawerMenuLayout.closeDrawer(GravityCompat.START)
             true
         }
+    }
+
+    private fun pressLogout() {
+        TODO("Not yet implemented")
     }
 
     private fun pressSettings() {
