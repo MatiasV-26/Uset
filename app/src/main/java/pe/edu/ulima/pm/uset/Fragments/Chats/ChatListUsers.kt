@@ -2,6 +2,7 @@ package pe.edu.ulima.pm.uset.Fragments.Chats
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -52,7 +53,7 @@ class ChatListUsers : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        //_binding = null
     }
 
     private fun initRecyclerView(){
@@ -72,22 +73,21 @@ class ChatListUsers : Fragment() {
                 (binding.recyclerViewChatsUsers.adapter as ChatUsersAdapter).setData(chatList)
             }
 
-        /*userDoc.collection("chats").orderBy("lastMsgDate", Query.Direction.DESCENDING)
+        userDoc.collection("chats")
             .addSnapshotListener { chats, error ->
                 if(error == null){
                     chats?.let {
-                        val listChats = it.toObjects(UserChat::class.java)
-                        (binding.recyclerViewChatsUsers.adapter as ChatUsersAdapter).setData(listChats)
+                        val chatList = it.toObjects(UserChat::class.java)
+                        (binding.recyclerViewChatsUsers.adapter as ChatUsersAdapter).setData(chatList)
                     }
                 }
             }
-*/
+
     }
 
     private fun chatPressed(userchat: UserChat) {
-
         parentFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerViewChats,ChatBtwUsers(),"chats")
+            .replace(R.id.fragmentContainerViewChats,ChatBtwUsers(userchat),"chats")
             .addToBackStack("2")
             .commit()
     }

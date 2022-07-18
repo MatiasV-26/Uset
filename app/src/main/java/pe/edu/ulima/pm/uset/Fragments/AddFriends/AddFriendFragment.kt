@@ -146,6 +146,7 @@ class AddFriendFragment:Fragment() {
     private fun addChatWithNewFriend(friendID:String){
         val IDChat = UUID.randomUUID().toString()
         var name = "Chat con "
+        var name2 = "Chat con "
 
         db.collection("users").document(userID!!).get()
             .addOnSuccessListener {
@@ -160,10 +161,10 @@ class AddFriendFragment:Fragment() {
 
         db.collection("users").document(friendID).get()
             .addOnSuccessListener {
-                name = name + it.data!!.get("nombres")
+                name2 = name2 + it.data!!.get("nombres")
                 val newChatWithUser = UserChat(
                     id = IDChat,
-                    name = name,
+                    name = name2,
                     users = listOf(userID!!,friendID)
                 )
                 addToUserChatCollection(userID!!,newChatWithUser)

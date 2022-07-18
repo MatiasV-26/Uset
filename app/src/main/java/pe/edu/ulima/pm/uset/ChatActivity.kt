@@ -2,6 +2,8 @@ package pe.edu.ulima.pm.uset
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.ImageView
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
@@ -14,8 +16,11 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.squareup.picasso.Picasso
 import pe.edu.ulima.pm.uset.Fragments.AddFriends.AddFriendFragment
+import pe.edu.ulima.pm.uset.Fragments.Chats.ChatListUsers
 import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
+import pe.edu.ulima.pm.uset.Models.Usuario
 import pe.edu.ulima.pm.uset.databinding.ActivityChatBinding
 import pe.edu.ulima.pm.uset.databinding.Toolbarchat01Binding
 import pe.edu.ulima.pm.uset.toolbar.ToolbarChat01
@@ -60,8 +65,8 @@ class ChatActivity : AppCompatActivity() {
         }
 
 
+        actualizarUsernameYProfilePic()
 
-        actualizarUsername()
 //        //VIEW BINDING FOR ACTIVITIES
 //        super.onCreate(savedInstanceState)
 //        binding = ActivityChatBinding.inflate(layoutInflater)
@@ -95,10 +100,12 @@ class ChatActivity : AppCompatActivity() {
 
     }
 
-    private fun actualizarUsername(){
+    private fun actualizarUsernameYProfilePic(){
         docRef.get().addOnSuccessListener {
             var nombreUser = it.data!!.get("nombres")
+            var imageURL : String? = it.data!!.get("uri").toString()
             findViewById<TextView>(R.id.tvUsernameMenu).text = nombreUser.toString()
+            Picasso.get().load(imageURL).into(findViewById<ImageView>(R.id.imageView2))
         }
     }
 
@@ -120,6 +127,14 @@ class ChatActivity : AppCompatActivity() {
             .addToBackStack("addFriendFragment")
             .commit()
         title = "Agregar amigos"
+    }
+
+    override fun onResume() {
+        super.onResume()
+        var a = binding.navView.checkedItem
+        if(a!=null){
+            a.setChecked(false)
+        }
     }
 
     override fun onBackPressed() {
@@ -145,13 +160,5 @@ class ChatActivity : AppCompatActivity() {
             R.id.option_two -> Toast.makeText(this, "ADD FRIEND", Toast.LENGTH_SHORT).show()
         }
         return true
-    }
-
-    override fun onResume() {
-        super.onResume()
-        var a = binding.navView.checkedItem
-        if(a!=null){
-            a.setChecked(false)
-        }
     }
 }

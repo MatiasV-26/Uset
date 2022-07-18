@@ -35,9 +35,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/bebasneue_regular"
-        android:text="UserName"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,16 +51,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/tvUsernameSettings" />
-
-    <ImageView
-        android:id="@+id/ivChangeNameIconSettings"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvUsernameSettings"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/edit_pencil_icon" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"

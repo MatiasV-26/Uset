@@ -13,8 +13,10 @@
         android:layout_width="wrap_content"
 
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:alpha="0.25"
+        android:clickable="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvChangeSex"
         app:singleSelection="true">
@@ -24,6 +26,7 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:text="Hombre" />
 
         <Button
@@ -31,6 +34,7 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:text="Mujer" />
 
         <Button
@@ -38,6 +42,7 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:text="Otro" />
 
     </com.google.android.material.button.MaterialButtonToggleGroup>
@@ -68,26 +73,30 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="5dp"
-        android:fontFamily="@font/rubik_variablefont_wght"
+        android:alpha="0.25"
 
+        android:clickable="false"
+
+        android:fontFamily="@font/rubik_variablefont_wght"
         android:gravity="start"
 
-        android:hint="Nombre..."
         android:inputType="textEmailAddress"
         android:textSize="16sp"
-
         app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
         app:layout_constraintEnd_toStartOf="@+id/ivChangeNameIcon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvChangeName">>
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tilCorreoEditText"
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/rubik_variablefont_wght"
+            android:alpha="0.25"
 
-            />
+            android:clickable="false"
+            android:enabled="false"
+            android:fontFamily="@font/rubik_variablefont_wght" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -99,14 +108,15 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="5dp"
-        android:fontFamily="@font/rubik_variablefont_wght"
+        android:alpha="0.25"
 
+        android:clickable="false"
+
+        android:fontFamily="@font/rubik_variablefont_wght"
         android:gravity="start"
 
-        android:hint="Ocupación..."
         android:inputType="textEmailAddress"
         android:textSize="16sp"
-
         app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
         app:layout_constraintEnd_toStartOf="@+id/ivChangeNameIcon"
         app:layout_constraintStart_toStartOf="parent"
@@ -117,13 +127,15 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/rubik_variablefont_wght"
+            android:alpha="0.25"
 
-            />
+            android:clickable="false"
+            android:enabled="false"
+            android:fontFamily="@font/rubik_variablefont_wght" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_enviar"
+        android:id="@+id/btncancelar"
 
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -145,7 +157,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_regresar"
+        android:id="@+id/btnguardar"
 
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -156,10 +168,12 @@
         android:layout_marginEnd="24dp"
 
         android:layout_marginBottom="16dp"
+        android:alpha="0.15"
+        android:clickable="false"
+
         android:fontFamily="@font/bebasneue_regular"
         android:gravity="center"
-
-        android:text="Regresar"
+        android:text="Guardar"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -184,6 +198,16 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvChangeLastName"
+        app:srcCompat="@drawable/edit_pencil_icon" />
+
+    <ImageView
+        android:id="@+id/ivChangeSex"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChangeSex"
         app:srcCompat="@drawable/edit_pencil_icon" />
 
     <ImageView
@@ -246,12 +270,13 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20sp"
         android:layout_marginVertical="5sp"
+        android:alpha="0.25"
+
+        android:clickable="false"
         android:fontFamily="@font/rubik_variablefont_wght"
 
         android:gravity="start"
-        android:hint="Apellidos..."
         android:textSize="16sp"
-
         app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
         app:layout_constraintEnd_toStartOf="@+id/ivChangeLastNameIcon"
         app:layout_constraintStart_toStartOf="parent"
@@ -261,6 +286,9 @@
             android:id="@+id/tilChangeLastNameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:alpha="0.25"
+            android:clickable="false"
+            android:enabled="false"
             android:fontFamily="@font/rubik_variablefont_wght" />
     </com.google.android.material.textfield.TextInputLayout>
 

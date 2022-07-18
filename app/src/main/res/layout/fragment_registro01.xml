@@ -42,9 +42,9 @@
         android:text="Para realizar su registro deberá utilizar un correo electrónico, cuenta de Facebook o Google."
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btn_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_ingresar"
         app:layout_constraintTop_toBottomOf="@+id/tv_registro" />
 
     <com.google.android.material.button.MaterialButton
@@ -68,9 +68,52 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_email"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageButton
+            android:id="@+id/btn_facebook"
+
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/fb_icon_325x325"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_google"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btn_google"
+
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/google_logo_png_suite_everything_you_need_know_about_google_newest_0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toEndOf="@id/btn_facebook"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_regresar"
+        android:id="@+id/btnRegresar"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -88,7 +131,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_email"
+        app:layout_constraintTop_toBottomOf="@+id/cl_layout"
         app:layout_constraintVertical_bias="0.0"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

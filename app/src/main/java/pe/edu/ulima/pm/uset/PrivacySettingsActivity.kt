@@ -1,13 +1,15 @@
 package pe.edu.ulima.pm.uset
 
 import android.os.Bundle
+import android.widget.Switch
 import androidx.appcompat.app.AppCompatActivity
+import com.squareup.picasso.Picasso
+import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
 import pe.edu.ulima.pm.uset.Fragments.Settings.privacy.PrivacySettingsFragment
+import pe.edu.ulima.pm.uset.Models.Usuario
 import pe.edu.ulima.pm.uset.databinding.ActivityPrivacySettingsBinding
 
 class PrivacySettingsActivity: AppCompatActivity(){
-
-    private var numTransactionsFragments = 0
 
     private lateinit var binding : ActivityPrivacySettingsBinding
 
@@ -19,27 +21,24 @@ class PrivacySettingsActivity: AppCompatActivity(){
 
         title="Privacidad"
 
-        /*numTransactionsFragments += 1
-        supportFragmentManager.beginTransaction()
-            .add(R.id.fcwPrivacySettings, PrivacySettingsFragment())
-            .addToBackStack("settings1")
-            .commit()*/
+        updateViews()
     }
+
 
     override fun onBackPressed() {
-        if (numTransactionsFragments == 1){
-            this.finish()
-        }else{
-            super.onBackPressed()
-            //minNumTransactions()
-        }
+        super.onBackPressed()
     }
 
-    /*public fun addNumTransactions(){
-        numTransactionsFragments += 1
+
+    private fun updateViews(){
+        FirebaseClass.db.collection("users").document(FirebaseClass.updateUI()!!)
+            .get().addOnSuccessListener {
+                var usuario = it.toObject(Usuario::class.java)
+                updateActivitySwitch(usuario!!.settingsBasicos.get("estadoActividad")!!)
+            }
     }
 
-    protected fun minNumTransactions(){
-        numTransactionsFragments -= 1
-    }*/
+    private fun updateActivitySwitch(cambio : Boolean){
+        findViewById<Switch>(R.id.swShowActivityState).isChecked = cambio
+    }
 }

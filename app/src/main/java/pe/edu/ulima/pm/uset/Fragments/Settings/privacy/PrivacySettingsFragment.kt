@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
+import pe.edu.ulima.pm.uset.Models.Usuario
 import pe.edu.ulima.pm.uset.PrivacySettingsActivity
 import pe.edu.ulima.pm.uset.R
 import pe.edu.ulima.pm.uset.databinding.FragmentPrivacySettingsBinding
@@ -37,6 +39,10 @@ class PrivacySettingsFragment:Fragment(){
 
         binding.ivHideInfoToArrow.setOnClickListener{onHidePersonalInfoPressed() }
 
+        binding.swShowActivityState.setOnCheckedChangeListener{
+            _ ,isChecked->onActivitySwitchChanged(isChecked)
+        }
+
     }
 
     private fun onHidePersonalInfoPressed(){
@@ -51,12 +57,24 @@ class PrivacySettingsFragment:Fragment(){
         }
     }
 
+    private fun onActivitySwitchChanged(activado : Boolean){
+        FirebaseClass.db.collection("users").document(FirebaseClass.updateUI()!!)
+            .get().addOnSuccessListener {
+                var usuario = it.toObject(Usuario::class.java)
+                var nuevossettingsBasicos = mapOf(
+                    "estadoActividad" to activado,
+                    "notifications" to usuario!!.settingsBasicos[("notifications")]!!
+                )
+                FirebaseClass.db.collection("users").document(FirebaseClass.updateUI()!!)
+                    .update("settingsBasicos",nuevossettingsBasicos)
+            }
+    }
+
+
     private fun onConfigPrivateData (isFriend : Boolean){
-        //(requireActivity() as PrivacySettingsActivity).addNumTransactions()
         parentFragmentManager.beginTransaction()
             .replace(R.id.fcwPrivacySettings, PrivacySettingsFragment2(isFriend))
             .addToBackStack("part2Privacy")
             .commit()
     }
-
 }
