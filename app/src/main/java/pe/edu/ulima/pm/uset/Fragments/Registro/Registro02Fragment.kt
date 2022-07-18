@@ -38,11 +38,21 @@ class Registro02Fragment : Fragment() {
             //Email is not empty
             if(android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                 //Email matches the pattern
-                FirebaseClass.auth.fetchSignInMethodsForEmail(email).addOnCompleteListener {
-                    if (it.isSuccessful)
-                        Log.e("LISTA",it.toString())
-                    else
+                FirebaseClass.auth.fetchSignInMethodsForEmail(email).addOnSuccessListener {
+                    if(it.signInMethods!=null){
+                        //Email exists
+                        if (it.signInMethods!!.size>0){
+                            Log.e("LISTA",it.signInMethods.toString())
+                        }
+                    }else{
+                        //Email doesn't exist
                         Log.e("LISTA","VACIO")
+                        RegistroActivity.correo = email
+                        parentFragmentManager.beginTransaction()
+                            .replace(R.id.fragmentContainerViewRegistro, Registro03Fragment())
+                            .addToBackStack("3")
+                            .commit()
+                    }
                 }
             }else{
                 //Email doesn't matches the pattern
@@ -54,10 +64,7 @@ class Registro02Fragment : Fragment() {
         }
         RegistroActivity.correo = email
         //AddFragment
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerViewRegistro, Registro03Fragment())
-            .addToBackStack("3")
-            .commit()
+
     }
     private fun BtnRegresar() {
         requireActivity().onBackPressed()
