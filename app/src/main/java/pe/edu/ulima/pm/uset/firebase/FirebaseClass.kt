@@ -18,30 +18,36 @@ class FirebaseClass {
         ){
             //1.Verification: Not empty fields
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                //2.Sign In: Check if credentials exist
-                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener{
-                    //3.Sign In Successful
-                    if (it.isSuccessful){
-                        //5.Verification: Check if Email has been verified
-                        if(auth.currentUser!!.isEmailVerified) {
-                            //TODO *****************************************************************
-                            //7.Check if uid relates to a document
-                            //8.uid RELATION document
-                            // *** goToChatActivity()
-                            //9.uid NOT RELATION document
-                            // *** goToCreateProfileActivity()
-                            //TODO *****************************************************************
-                        }else{
-                            //6.NOT Verified email
-                            Toast.makeText(context, "Verifique su correo para continuar...", Toast.LENGTH_SHORT).show()
-                            //Send email verification
-                            auth.currentUser!!.sendEmailVerification()
+                //1.Verification: Email pattern
+                if(android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                    //2.Sign In: Check if credentials exist
+                    auth.signInWithEmailAndPassword(email, password).addOnCompleteListener{
+                        //3.Sign In Successful
+                        if (it.isSuccessful){
+                            //5.Verification: Check if Email has been verified
+                            if(auth.currentUser!!.isEmailVerified) {
+                                //TODO *****************************************************************
+                                //7.Check if uid relates to a document
+                                //8.uid RELATION document
+                                // *** goToChatActivity()
+                                //9.uid NOT RELATION document
+                                // *** goToCreateProfileActivity()
+                                //TODO *****************************************************************
+                            }else{
+                                //6.NOT Verified email
+                                Toast.makeText(context, "Verifique su correo para continuar...", Toast.LENGTH_SHORT).show()
+                                //Send email verification
+                                auth.currentUser!!.sendEmailVerification()
+                            }
+                        }
+                        //4.Sign In Unsuccessful
+                        else{
+                            Toast.makeText(context, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
                         }
                     }
-                    //4.Sign In Unsuccessful
-                    else{
-                        Toast.makeText(context, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
-                    }
+                }else{
+                    //1.Verification: Email pattern not matches
+                    Toast.makeText(context, "El correo ingresado no es valido", Toast.LENGTH_SHORT).show()
                 }
             }
             //1.Verification: Not empty fields
