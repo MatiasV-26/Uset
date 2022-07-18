@@ -7,77 +7,61 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import pe.edu.ulima.pm.uset.ChatActivity
 import pe.edu.ulima.pm.uset.CreateProfileActivity
 import pe.edu.ulima.pm.uset.Fragments.CreateProfile.CreateProfile01Fragment
 import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
+import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass.Companion.Correo
 import pe.edu.ulima.pm.uset.R
 import pe.edu.ulima.pm.uset.RegistroActivity
 import pe.edu.ulima.pm.uset.databinding.FragmentRegistro04Binding
 
 class Registro04Fragment : Fragment() {
-
+    //VIEW BINDING FOR FRAGMENTS
     private var _binding: FragmentRegistro04Binding? = null
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    //ACTIVITY LIFECYCLE
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        //VIEW BINDING FOR FRAGMENTS
+        _binding = FragmentRegistro04Binding.inflate(inflater, container, false)
+        return binding.root
     }
-//    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-//        _binding = FragmentRegistro04Binding.inflate(inflater, container, false)
-//        return binding.root
-//    }
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        VerificacionCorreo()
-//        binding.btnSiguiente.setOnClickListener {
-//            if (user != null) {
-//                FirebaseClass
-//                    .isVerifiedEmailAndSignInWithEmailAndPassword(
-//                        RegistroActivity.correo!!,
-//                        RegistroActivity.password!!,
-//                        requireContext(),
-//                        { goToChatActivity() }
-//                    )?.addOnCompleteListener(requireActivity()){
-//                        if (it.isSuccessful){
-//                            if(FirebaseClass.auth.currentUser!!.isEmailVerified) {
-//                                Toast.makeText(context, "USUARIO VERIFICADO", Toast.LENGTH_SHORT).show()
-//                                goToChatActivity()
-//                            }else{
-//                                Toast.makeText(context, "USUARIO NNOO VERIFICADO", Toast.LENGTH_SHORT).show()
-//                                FirebaseClass.auth.currentUser!!.sendEmailVerification()
-//                            }
-//                        }else{
-//                            Toast.makeText(context, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
-//                        }
-//                    }
-//            }
-//        }
-//    }
-//    private fun goToChatActivity() {
-//        requireActivity().finish()
-//        startActivity(Intent(requireActivity(), CreateProfileActivity::class.java))
-//    }
-//
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        _binding = null
-//    }
-//    private fun VerificacionCorreo(){
-//        user?.sendEmailVerification()?.addOnCompleteListener {
-//            if (it.isSuccessful){
-//                Toast.makeText(context, "Correo Enviado", Toast.LENGTH_SHORT).show()
-//            }else{
-//                Toast.makeText(context, "${it.exception?.message}", Toast.LENGTH_SHORT).show()
-//            }
-//        }
-//    }
-//    private fun BotonEnviar() {
-//        parentFragmentManager.beginTransaction()
-//            .replace(R.id.fragmentContainerViewRegistro, CreateProfile01Fragment(),"registro 4")
-//            .addToBackStack("4")
-//            .commit()
-//    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        //BUTTONS CLICK LISTENERS
+        binding.btnSiguiente.setOnClickListener { BtnSiguiente()    }
+        binding.btnRegresar.setOnClickListener  { BtnRegresar()     }
+    }
 
+    //OnViewCreated Functions ON CLICK LISTENERS ***************************************************
+    private fun BtnSiguiente() {
+        FirebaseClass.isVerifiedEmailAndSignInWithEmailAndPassword(
+            RegistroActivity.correo!!,
+            RegistroActivity.password!!,
+            requireContext(),
+            { goToChatActivity() },
+            { goToCreateProfileActivity() }
+        )
+    }
+    private fun goToChatActivity() {
+        //This' parent activity must be deleted after going to Chat Activity
+        requireActivity().finish()
+        startActivity(Intent(requireActivity(), ChatActivity::class.java))
+    }
+    private fun goToCreateProfileActivity() {
+        requireActivity().finish()
+        startActivity(Intent(requireActivity(), CreateProfileActivity::class.java))
+    }
+    private fun BtnRegresar() {
+        requireActivity().onBackPressed()
+    }
+    //OnViewCreated Functions ON CLICK LISTENERS ***************************************************
 
-
+    //ACTIVITY LIFECYCLE
+    override fun onDestroyView() {
+        super.onDestroyView()
+        //VIEW BINDING FOR FRAGMENTS
+        _binding = null
+    }
 }

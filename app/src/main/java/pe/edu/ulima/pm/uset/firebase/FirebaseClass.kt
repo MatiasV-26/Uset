@@ -72,20 +72,15 @@ class FirebaseClass {
         fun createUserWithEmailAndPassword(
             email:String, password: String, context: Context,
             addFragmentRegistro04: ()->Unit
-        ): Task<AuthResult>? {
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                if(password.length<6){
-                    Toast.makeText(context, "La contraseña debe tener 6 caracteres a más", Toast.LENGTH_SHORT).show()
+        ){
+            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+                if(it.isSuccessful){
+                    auth.currentUser!!.sendEmailVerification()
+                    addFragmentRegistro04()
                 }else{
-                    return auth.createUserWithEmailAndPassword(email, password)
+                    Toast.makeText(context, "Error en registro", Toast.LENGTH_SHORT).show()
                 }
-            }else{
-                if (email.isEmpty())
-                    Toast.makeText(context, "Ingrese un correo", Toast.LENGTH_SHORT).show()
-                else
-                    Toast.makeText(context, "Ingrese una contraseña", Toast.LENGTH_SHORT).show()
             }
-            return null
         }
 
         fun signInWithCredential(credential:AuthCredential,context:Context): Task<AuthResult>?{

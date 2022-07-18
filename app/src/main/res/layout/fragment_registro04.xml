@@ -76,7 +76,7 @@
         android:fontFamily="@font/bebasneue_regular"
         android:gravity="center"
 
-        android:text="Siguiente"
+        android:text="Verificado!"
         android:textSize="32dp"
         android:textStyle="bold"
 

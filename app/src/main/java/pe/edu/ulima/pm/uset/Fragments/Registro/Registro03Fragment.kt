@@ -45,25 +45,24 @@ class Registro03Fragment : Fragment() {
                 //Password length is enough
                 //Save email in parent activity
                 RegistroActivity.password = pass1
-
-                FirebaseClass.auth.createUserWithEmailAndPassword(RegistroActivity.correo!!, pass1).addOnCompleteListener {
-                    if (it.isSuccessful){
-                        Toast.makeText(requireContext(), "ANTES DE ENVIAR CORREO", Toast.LENGTH_SHORT).show()
-                        FirebaseClass.auth.currentUser!!.sendEmailVerification()
-                    }else
-                        Toast.makeText(requireContext(), "NADA :(", Toast.LENGTH_SHORT).show()
-
-                }
-                //AddFragment
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainerViewRegistro, Registro04Fragment(),"registro 3")
-                    .addToBackStack("3")
-                    .commit()
+                //Execute creation
+                FirebaseClass.createUserWithEmailAndPassword(
+                    RegistroActivity.correo!!,
+                    RegistroActivity.password!!,
+                    requireContext()
+                ) { addFragmentRegistro04() }
             }else{
                 //Password length is NOT enough
                 Toast.makeText(context, "La contraseña debe tener 6 caracteres como mínimo", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+    private fun addFragmentRegistro04(){
+        //AddFragment
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerViewRegistro, Registro04Fragment(),"registro 3")
+            .addToBackStack("3")
+            .commit()
     }
     private fun BtnRegresar() {
         requireActivity().onBackPressed()
