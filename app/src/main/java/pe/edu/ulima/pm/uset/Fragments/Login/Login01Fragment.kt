@@ -44,7 +44,6 @@ class Login01Fragment : Fragment() {
         val email = binding.tilCorreoEditText.text.toString().trim { it <= ' ' }
         val password = binding.tilIngresarContrasenaEditText.text.toString()
         FirebaseClass.signInWithEmailAndPassword(email,password,requireContext())?.addOnCompleteListener(requireActivity()) {
-
             if (it.isSuccessful){
                 goToChatActivity()
             }
@@ -101,12 +100,6 @@ class Login01Fragment : Fragment() {
     }
     override fun onStart() {
         super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.a
-        if (FirebaseClass.updateUI() != null){
-            goToChatActivity()
-        }else{
-            Toast.makeText(requireActivity(), "NO TENEMOS USUARIO :(", Toast.LENGTH_SHORT).show()
-        }
     }
     override fun onDestroyView() {
         super.onDestroyView()

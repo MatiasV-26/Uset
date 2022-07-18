@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import pe.edu.ulima.pm.uset.Fragments.AddFriends.AddFriendFragment
 import pe.edu.ulima.pm.uset.Fragments.Chats.ChatListUsers
+import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
 import pe.edu.ulima.pm.uset.databinding.ActivityChatBinding
 
 class ChatActivity : AppCompatActivity() {
@@ -52,7 +53,9 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun pressLogout() {
-        TODO("Not yet implemented")
+        FirebaseClass.auth.signOut()
+        this.finish()
+        startActivity(Intent(this,LoginActivity::class.java))
     }
 
     private fun pressSettings() {
