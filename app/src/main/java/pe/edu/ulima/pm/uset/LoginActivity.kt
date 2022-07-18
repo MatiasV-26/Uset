@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import pe.edu.ulima.pm.uset.Fragments.Login.Login01Fragment
 import pe.edu.ulima.pm.uset.databinding.ActivityLoginBinding
+import pe.edu.ulima.pm.uset.toolbar.ToolbarLogin
 
 class LoginActivity : AppCompatActivity() {
     //VIEW BINDING FOR ACTIVITIESs
@@ -14,6 +15,7 @@ class LoginActivity : AppCompatActivity() {
     private val fragmentTransaction = fragmentManager.beginTransaction()
     private val fragmentLoginList: List<Fragment> = listOf(Login01Fragment())
 
+
     //ACTIVITY LIFECYCLE
     override fun onCreate(savedInstanceState: Bundle?) {
         //VIEW BINDING FOR ACTIVITIES
@@ -21,8 +23,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         //TITLE
-        binding.tbToolbarlogin.mtToolbarlogin.title = "...USET.."
-        setSupportActionBar(binding.tbToolbarlogin.mtToolbarlogin)
+        ToolbarLogin().show(this,"...USET...",false,binding.tbToolbarlogin.mtToolbarlogin)
         //FRAGMENT MANAGEMENT
         SetFragmentTransactionInConstant(0)
     }

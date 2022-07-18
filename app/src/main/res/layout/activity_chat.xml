@@ -11,6 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <include
+            layout="@layout/toolbarchat01"
+            android:id="@+id/tb_toolbarchat01"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/fragmentContainerViewChats"
+            />
+
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerViewChats"
             android:layout_width="0dp"
@@ -19,7 +28,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tb_toolbarchat01"
             tools:layout="@layout/fragment_chat_list_users" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

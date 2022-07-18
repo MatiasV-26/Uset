@@ -2,17 +2,17 @@ package pe.edu.ulima.pm.uset
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import pe.edu.ulima.pm.uset.Fragments.AddFriends.AddFriendFragment
-import pe.edu.ulima.pm.uset.Fragments.Chats.ChatListUsers
 import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
-import pe.edu.ulima.pm.uset.Models.Usuario
 import pe.edu.ulima.pm.uset.databinding.ActivityChatBinding
 
 class ChatActivity : AppCompatActivity() {
@@ -105,5 +105,18 @@ class ChatActivity : AppCompatActivity() {
             }
             super.onBackPressed()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_contextual01,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.option_one -> Toast.makeText(this, "ADD FRIEND", Toast.LENGTH_SHORT).show()
+            R.id.option_two -> Toast.makeText(this, "ADD FRIEND", Toast.LENGTH_SHORT).show()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
