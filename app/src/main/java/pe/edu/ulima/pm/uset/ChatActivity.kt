@@ -9,6 +9,9 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import pe.edu.ulima.pm.uset.Fragments.AddFriends.AddFriendFragment
@@ -32,7 +35,7 @@ class ChatActivity : AppCompatActivity() {
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ToolbarChat01().show(this,"Chats",true,binding.tbToolbarchat01.mtToolbarlogin)
+
 
         title = "Chats"
 
@@ -55,6 +58,13 @@ class ChatActivity : AppCompatActivity() {
             binding.drawerMenuLayout.closeDrawer(GravityCompat.START)
             true
         }
+
+
+
+        val navController = findNavController(binding.navView)
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        binding.tbToolbarchat01.mtToolbarlogin.setupWithNavController(navController, appBarConfiguration)
+        ToolbarChat01().show(this,"Chats",true,binding.tbToolbarchat01.mtToolbarlogin)
 
 
 

@@ -9,6 +9,8 @@
     android:textAlignment="center"
     app:title="Chats"
     app:navigationIcon="@drawable/ic_baseline_drag_handle_24"
-    android:theme="@style/ToolbarTheme">
+    android:theme="@style/ToolbarTheme"
+    app:layout_collapseMode="pin"
+    >
 
 </com.google.android.material.appbar.MaterialToolbar>

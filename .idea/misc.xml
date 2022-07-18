@@ -32,6 +32,23 @@
         <entry key="app/src/main/res/layout/fragment_create_profile02.xml" value="0.14387031408308004" />
         <entry key="app/src/main/res/layout/fragment_create_profile03.xml" value="0.14387031408308004" />
         <entry key="app/src/main/res/layout/fragment_registro01.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.22188722914543718" />
+        <entry key="app/src/main/res/layout/activity_create_profile.xml" value="0.26766304347826086" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.10246734619140624" />
+        <entry key="app/src/main/res/layout/fragment_create_profile01.xml" value="0.3223129272460938" />
+        <entry key="app/src/main/res/layout/fragment_create_profile02.xml" value="0.33689399572370504" />
+        <entry key="app/src/main/res/layout/fragment_create_profile03.xml" value="0.2994474014854238" />
+        <entry key="app/src/main/res/layout/fragment_login01.xml" value="0.2276470947265625" />
+        <entry key="app/src/main/res/layout/fragment_registro01.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_registro02.xml" value="0.2796598007372206" />
+        <entry key="app/src/main/res/layout/fragment_registro03.xml" value="0.24320652173913043" />
+        <entry key="app/src/main/res/layout/fragment_registro04.xml" value="0.29635416666666664" />
+        <entry key="app/src/main/res/layout/toolbar_login.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/toolbarchat01.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/toolbarchat02.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/toolbarchat03.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/toolbarchat04.xml" value="0.21" />
+        <entry key="app/src/main/res/menu/menu_contextual.xml" value="0.19112396240234375" />
       </map>
     </option>
   </component>
