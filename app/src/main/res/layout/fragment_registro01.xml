@@ -48,7 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_registro" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_ingresar"
+        android:id="@+id/btn_email"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
         android:fontFamily="@font/bebasneue_regular"
         android:gravity="center"
 
-        android:text="Ingresar"
+        android:text="Correo electronico"
         android:textSize="32dp"
         android:textStyle="bold"
 
@@ -79,7 +79,7 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_ingresar"
+        app:layout_constraintTop_toBottomOf="@id/btn_email"
         app:layout_constraintVertical_bias="0.0">
 
         <ImageButton

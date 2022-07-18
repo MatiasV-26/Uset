@@ -1,76 +1,79 @@
 package pe.edu.ulima.pm.uset.Fragments.Registro
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import pe.edu.ulima.pm.uset.CreateProfileActivity
 import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
 import pe.edu.ulima.pm.uset.R
 import pe.edu.ulima.pm.uset.RegistroActivity
-import pe.edu.ulima.pm.uset.databinding.FragmentRegistro04Binding
+import pe.edu.ulima.pm.uset.databinding.FragmentRegistro03Binding
 
 class Registro03Fragment : Fragment() {
-
-    private var _binding: FragmentRegistro04Binding? = null
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    //VIEW BINDING FOR FRAGMENTS
+    private var _binding: FragmentRegistro03Binding? = null
     private val binding get() = _binding!!
-    val user = FirebaseClass.auth2.currentUser
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    //ACTIVITY LIFECYCLE
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = FragmentRegistro04Binding.inflate(inflater, container, false)
+        //VIEW BINDING FOR FRAGMENTS
+        _binding = FragmentRegistro03Binding.inflate(inflater, container, false)
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnEnviar.setOnClickListener {
-            Toast.makeText(context, RegistroActivity.correo, Toast.LENGTH_SHORT).show()
-            btnEnviar()
-        }
+        //BUTTONS CLICK LISTENERS
+        binding.btnSiguiente.      setOnClickListener { BtnEnviar()    }
+        binding.btnRegresar.    setOnClickListener { BtnRegresar()  }
     }
-    //TODO: OnViewCreated Functions ****************************************************************
-    private fun btnEnviar() {
-        val password = binding.tilContraseAEditText.text.toString()
-        val password2 = binding.tilContraseA2EditText.text.toString()
-        if (password != password2){
+
+    //OnViewCreated Functions ON CLICK LISTENERS ***************************************************
+    private fun BtnEnviar() {
+        //Compare passwords
+        val pass1 = binding.tilContraseAEditText.text.toString()
+        val pass2 = binding.tilContraseA2EditText.text.toString()
+        //1.Passwords don't match
+        if (pass1 != pass2){
             Toast.makeText(context, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
-        }else{
-            RegistroActivity.password = password2
-            Toast.makeText(requireContext(), "ANTES DE SIGN IN", Toast.LENGTH_SHORT).show()
-            FirebaseClass.auth.createUserWithEmailAndPassword(RegistroActivity.correo!!, password).addOnCompleteListener {
-                if (it.isSuccessful){
-                    Toast.makeText(requireContext(), "ANTES DE ENVIAR CORREO", Toast.LENGTH_SHORT).show()
-                    FirebaseClass.auth.currentUser!!.sendEmailVerification()
-                }else
-                    Toast.makeText(requireContext(), "NADA :(", Toast.LENGTH_SHORT).show()
+        }
+        //2.Passwords match
+        else{
+            //3.Check passwords length
+            if(pass1.length>=6){
+                //Password length is enough
+                //Save email in parent activity
+                RegistroActivity.password = pass1
 
+                FirebaseClass.auth.createUserWithEmailAndPassword(RegistroActivity.correo!!, pass1).addOnCompleteListener {
+                    if (it.isSuccessful){
+                        Toast.makeText(requireContext(), "ANTES DE ENVIAR CORREO", Toast.LENGTH_SHORT).show()
+                        FirebaseClass.auth.currentUser!!.sendEmailVerification()
+                    }else
+                        Toast.makeText(requireContext(), "NADA :(", Toast.LENGTH_SHORT).show()
+
+                }
+                //AddFragment
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainerViewRegistro, Registro04Fragment(),"registro 3")
+                    .addToBackStack("3")
+                    .commit()
+            }else{
+                //Password length is NOT enough
+                Toast.makeText(context, "La contraseña debe tener 6 caracteres como mínimo", Toast.LENGTH_SHORT).show()
             }
-            Toast.makeText(requireContext(), "DESPUES DE SIGN IN", Toast.LENGTH_SHORT).show()
-
-            BotonEnviar()
         }
     }
+    private fun BtnRegresar() {
+        requireActivity().onBackPressed()
+    }
+    //OnViewCreated Functions ON CLICK LISTENERS ***************************************************
 
-    //TODO: OnViewCreated Functions ****************************************************************
-
+    //ACTIVITY LIFECYCLE
     override fun onDestroyView() {
         super.onDestroyView()
+        //VIEW BINDING FOR FRAGMENTS
         _binding = null
     }
-    private fun BotonEnviar() {
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerViewRegistro, Registro04Fragment(),"registro 3")
-            .addToBackStack("3")
-            .commit()
-    }
-
-
-
 }

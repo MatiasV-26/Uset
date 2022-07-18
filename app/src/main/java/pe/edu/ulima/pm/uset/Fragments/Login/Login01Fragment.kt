@@ -14,21 +14,25 @@ import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.firebase.auth.FacebookAuthProvider
 import pe.edu.ulima.pm.uset.ChatActivity
-import pe.edu.ulima.pm.uset.RegistroActivity
+import pe.edu.ulima.pm.uset.CreateProfileActivity
 import pe.edu.ulima.pm.uset.databinding.FragmentLogin01Binding
+
 class Login01Fragment : Fragment() {
+    //VIEW BINDING FOR FRAGMENTS
     private var _binding: FragmentLogin01Binding? = null
     private val binding get() = _binding!!
+    //FACEBOOK CALLBACKMANAGER
     private val callBackManager = CallbackManager.Factory.create()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+
+    //ACTIVITY LIFECYCLE
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        //VIEW BINDING FOR FRAGMENTS
         _binding = FragmentLogin01Binding.inflate(inflater, container, false)
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //BUTTONS CLICK LISTENERS
         binding.tvOlvideMiContrasena.   setOnClickListener  { TvOlvideMiContrasena()    }
         binding.btnIngresar.            setOnClickListener  { BtnIngresar()             }
         binding.btnFacebook.            setOnClickListener  { BtnFacebook()             }
@@ -36,33 +40,20 @@ class Login01Fragment : Fragment() {
         binding.tvCrearUnaCuenta.       setOnClickListener  { TVCrearUnaCuenta()        }
     }
 
-    //TODO: OnViewCreated Functions ****************************************************************
+    //OnViewCreated Functions ON CLICK LISTENERS ***************************************************
     private fun TvOlvideMiContrasena() {
         Toast.makeText(context, "Implementacion futura ...", Toast.LENGTH_SHORT).show()
     }
     private fun BtnIngresar() {
-        val email = binding.tilCorreoEditText.text.toString().trim { it <= ' ' }
-        val password = binding.tilIngresarContrasenaEditText.text.toString()
-        FirebaseClass.isVerifiedEmailAndSignInWithEmailAndPassword(email,password,requireContext())?.addOnCompleteListener(requireActivity()){
-            if (it.isSuccessful){
-                if(FirebaseClass.auth.currentUser!!.isEmailVerified) {
-                    Toast.makeText(context, "UserVerified", Toast.LENGTH_SHORT).show()
-                    goToChatActivity()
-                }else{
-                    Toast.makeText(context, "Verifique su correo", Toast.LENGTH_SHORT).show()
-                    FirebaseClass.auth.currentUser!!.sendEmailVerification()
-                }
-            }else{
-                Toast.makeText(context, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
-            }
-        }
+        //FIREBASE CLASS IMPLEMENTATION
+        FirebaseClass.isVerifiedEmailAndSignInWithEmailAndPassword(
+            binding.tilCorreoEditText.text.toString().trim { it <= ' ' },
+            binding.tilIngresarContrasenaEditText.text.toString(),
+            requireContext(),
+            { goToChatActivity() },
+            { goToCreateProfileActivity() }
+        )
     }
-
-    private fun goToChatActivity() {
-        requireActivity().finish()
-        startActivity(Intent(requireActivity(), ChatActivity::class.java))
-    }
-
     private fun BtnFacebook() {
         Toast.makeText(context, "BtnFacebook", Toast.LENGTH_SHORT).show()
         //TODO
@@ -95,19 +86,31 @@ class Login01Fragment : Fragment() {
         Toast.makeText(context, "BtnGoogle", Toast.LENGTH_SHORT).show()
     }
     private fun TVCrearUnaCuenta() {
-        startActivity(Intent(requireActivity(), RegistroActivity::class.java))
-    }                                                               //DONE
-    //TODO: onViewCreated Functions ****************************************************************
+        goToRegistroActivity()
+    }
+    //OnViewCreated Functions ON CLICK LISTENERS ***************************************************
 
+    //GO TO "ANOTHER" ACTIVITIES
+    private fun goToChatActivity() {
+        //This' parent activity must be deleted after going to Chat Activity
+        requireActivity().finish()
+        startActivity(Intent(requireActivity(), ChatActivity::class.java))
+    }
+    private fun goToCreateProfileActivity() {
+        startActivity(Intent(requireActivity(), CreateProfileActivity::class.java))
+    }
+    private fun goToRegistroActivity() {
+        startActivity(Intent(requireActivity(), ChatActivity::class.java))
+    }
+
+    //ACTIVITY LIFECYCLE
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         callBackManager.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
     }
-    override fun onStart() {
-        super.onStart()
-    }
     override fun onDestroyView() {
         super.onDestroyView()
+        //VIEW BINDING FOR FRAGMENTS
         _binding = null
     }
 }

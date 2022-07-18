@@ -8,7 +8,7 @@
     tools:context=".Fragments.Registro.Registro03Fragment">
 
     <TextView
-        android:id="@+id/tv_ValidarContraseña"
+        android:id="@+id/tv_ValidarCorreo"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
         android:fontFamily="@font/bebasneue_regular"
 
         android:gravity="center"
-        android:text="Contraseña"
+        android:text="Validar Correo"
         android:textSize="50sp"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,107 +28,42 @@
         />
 
     <TextView
-        android:id="@+id/tv_ingresarContraseña"
+        android:id="@+id/tv_Texto1"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="@font/rubik_variablefont_wght"
 
         android:gravity="start"
-        android:text="Ingresar contraseña"
+        android:text="Se enviara un correo para que verificar su cuenta"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_ValidarContraseña" />
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_contraseña"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:textSize="16sp"
-        android:hint="Escriba la nueva contraseña"
-        android:gravity="start"
-        android:fontFamily="@font/rubik_variablefont_wght"
-
-        app:startIconDrawable="@drawable/ic_baseline_vpn_key_24"
-        android:inputType="textPassword"
-
-        app:layout_constraintTop_toBottomOf="@id/tv_ingresarContraseña"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="5dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/til_contraseñaEditText"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/rubik_variablefont_wght"
-
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@+id/tv_ValidarCorreo" />
 
     <TextView
-        android:id="@+id/tv_ingresarContraseña2"
+        android:id="@+id/tv_texto2"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="16dp"
-
         android:fontFamily="@font/rubik_variablefont_wght"
+
         android:gravity="start"
-        android:text="Repita contraseña"
+        android:text="Necesitara realizar la verificación para poder iniciar sesión"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_contraseña" />
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_contraseña2"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:textSize="16sp"
-        android:hint="Repita contraseña"
-        android:gravity="start"
-        android:fontFamily="@font/rubik_variablefont_wght"
-
-        app:startIconDrawable="@drawable/ic_baseline_vpn_key_24"
-        android:inputType="textPassword"
-
-        app:layout_constraintTop_toBottomOf="@id/tv_ingresarContraseña2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="5dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/til_contraseña2EditText"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/rubik_variablefont_wght"
-
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@+id/tv_Texto1" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_enviar"
+        android:id="@+id/btn_siguiente"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -139,7 +74,7 @@
         android:fontFamily="@font/bebasneue_regular"
         android:gravity="center"
 
-        android:text="Enviar"
+        android:text="Siguiente"
         android:textSize="32dp"
         android:textStyle="bold"
 
@@ -167,7 +102,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_enviar"
+        app:layout_constraintTop_toBottomOf="@+id/btn_siguiente"
         app:layout_constraintVertical_bias="0.0"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

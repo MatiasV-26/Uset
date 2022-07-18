@@ -1,41 +1,65 @@
 package pe.edu.ulima.pm.uset.Fragments.Login
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
-import android.util.Log
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat.startActivity
-import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import pe.edu.ulima.pm.uset.ChatActivity
 
 class FirebaseClass {
     companion object{
         val auth =  Firebase.auth
-        var auth2 = FirebaseAuth.getInstance()
-        fun isVerifiedEmailAndSignInWithEmailAndPassword(email:String,password: String,context: Context):Task<AuthResult>?{
+
+        fun isVerifiedEmailAndSignInWithEmailAndPassword(
+            email:String, password: String, context: Context,
+            goToChatActivity: ()->Unit, goToCreateProfileActivity: ()->Unit
+        ){
+            //1.Verification: Not empty fields
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                return auth.signInWithEmailAndPassword(email, password)
+                //2.Sign In: Check if credentials exist
+                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener{
+                    //3.Sign In Successful
+                    if (it.isSuccessful){
+                        //5.Verification: Check if Email has been verified
+                        if(auth.currentUser!!.isEmailVerified) {
+                            //TODO *****************************************************************
+                            //7.Check if uid relates to a document
+                            //8.uid RELATION document
+                            // *** goToChatActivity()
+                            //9.uid NOT RELATION document
+                            // *** goToCreateProfileActivity()
+                            //TODO *****************************************************************
+                        }else{
+                            //6.NOT Verified email
+                            Toast.makeText(context, "Verifique su correo para continuar...", Toast.LENGTH_SHORT).show()
+                            //Send email verification
+                            auth.currentUser!!.sendEmailVerification()
+                        }
+                    }
+                    //4.Sign In Unsuccessful
+                    else{
+                        Toast.makeText(context, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
+            //1.Verification: Not empty fields
             else{
                 if (email.isEmpty())
+                    //Empty Email
                     Toast.makeText(context, "Ingrese un correo", Toast.LENGTH_SHORT).show()
-                else
+                else{
+                    //Empty password
                     Toast.makeText(context, "Ingrese una contraseña", Toast.LENGTH_SHORT).show()
+                }
             }
-            return null
         }
 
-        fun createUserWithEmailAndPassword(email:String,password:String,context:Context): Task<AuthResult>? {
+        fun createUserWithEmailAndPassword(
+            email:String, password: String, context: Context,
+            addFragmentRegistro04: ()->Unit
+        ): Task<AuthResult>? {
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 if(password.length<6){
                     Toast.makeText(context, "La contraseña debe tener 6 caracteres a más", Toast.LENGTH_SHORT).show()
@@ -51,16 +75,15 @@ class FirebaseClass {
             return null
         }
 
-
-
-        fun signInWithCredential(credential:AuthCredential,context:Context): Task<AuthResult>?{
+        fun signInWithCredential(
+            credential:AuthCredential,
+            context:Context
+        ): Task<AuthResult>?{
             return auth.signInWithCredential(credential)
         }
+
         fun updateUI():String? {
             return auth.currentUser?.uid
-        }
-        fun UpdateAuth(){
-            auth2 = FirebaseAuth.getInstance()
         }
     }
 }
