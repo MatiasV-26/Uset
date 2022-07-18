@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.storage.FirebaseStorage
 import pe.edu.ulima.pm.uset.Fragments.CreateProfile.CreateProfile01Fragment
 import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
-import pe.edu.ulima.pm.uset.databinding.ActivityCreateProfileBinding
 import pe.edu.ulima.pm.uset.databinding.ActivityGuardarFotoBinding
 import java.util.*
 
