@@ -17,7 +17,6 @@ class LoginActivity : AppCompatActivity() {
     private val fragmentTransaction = fragmentManager.beginTransaction()
     private val fragmentLoginList: List<Fragment> = listOf(Login01Fragment())
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -31,31 +30,4 @@ class LoginActivity : AppCompatActivity() {
             .add(R.id.fragmentContainerViewLogin, fragmentLoginList[fragment],"1")
             .commit()
     }
-
-
-    override fun onStart() {
-        super.onStart()
-        Log.w("TRACK","onStart")
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Log.w("TRACK","onStart")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.w("TRACK","onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.w("TRACK","onStop")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.w("TRACK","onDestroy")
-    }
-
 }

@@ -8,6 +8,7 @@ import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -45,6 +46,9 @@ class FirebaseClass {
                     Toast.makeText(context, "Ingrese una contraseña", Toast.LENGTH_SHORT).show()
             }
             return null
+        }
+        fun signInWithCredential(credential:AuthCredential,context:Context): Task<AuthResult>?{
+            return auth.signInWithCredential(credential)
         }
         fun updateUI(context:Context){
             val user = auth.currentUser
