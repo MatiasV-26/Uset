@@ -1,4 +1,5 @@
 package pe.edu.ulima.pm.uset.Fragments.Login
+import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +10,7 @@ import android.widget.Toast
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
+import com.facebook.appevents.AppEventsLogger
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.firebase.auth.FacebookAuthProvider
@@ -21,6 +23,7 @@ class Login01Fragment : Fragment() {
     private val callBackManager = CallbackManager.Factory.create()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppEventsLogger.activateApp(Application())
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentLogin01Binding.inflate(inflater, container, false)
@@ -56,7 +59,7 @@ class Login01Fragment : Fragment() {
     private fun BtnFacebook() {
         Toast.makeText(context, "BtnFacebook", Toast.LENGTH_SHORT).show()
         //TODO
-        LoginManager.getInstance().logInWithReadPermissions(requireActivity(), listOf("email"))
+        //LoginManager.getInstance().logInWithReadPermissions(requireActivity(), listOf("email"))
         LoginManager.getInstance().registerCallback(callBackManager,
             object: FacebookCallback<LoginResult>{
                 override fun onSuccess(result: LoginResult) {
@@ -89,6 +92,10 @@ class Login01Fragment : Fragment() {
     }                                                               //DONE
     //TODO: onViewCreated Functions ****************************************************************
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        callBackManager.onActivityResult(requestCode, resultCode, data)
+        super.onActivityResult(requestCode, resultCode, data)
+    }
     override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
