@@ -17,6 +17,7 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import pe.edu.ulima.pm.uset.ChatActivity
+import pe.edu.ulima.pm.uset.Models.Usuario
 
 class FirebaseClass {
     companion object{
@@ -50,8 +51,6 @@ class FirebaseClass {
             }
             return null
         }
-
-
 
         fun signInWithCredential(credential:AuthCredential,context:Context): Task<AuthResult>?{
             return auth.signInWithCredential(credential)
