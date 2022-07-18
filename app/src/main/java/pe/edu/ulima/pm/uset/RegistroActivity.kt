@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import pe.edu.ulima.pm.uset.Fragments.Registro.Registro01Fragment
 import pe.edu.ulima.pm.uset.databinding.ActivityRegistroBinding
 import pe.edu.ulima.pm.uset.interfaces.IOnBackPressed
+import pe.edu.ulima.pm.uset.toolbar.ToolbarLogin
 
 class RegistroActivity : AppCompatActivity() {
     //VIEW BINDING FOR ACTIVITIES
@@ -26,8 +27,8 @@ class RegistroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegistroBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //TITLE
-        title = "...REGISTRO..."
+        //TOOLBAR
+        ToolbarLogin().show(this,"USET",false,binding.tbToolbarlogin.mtToolbarlogin)
         //FRAGMENT MANAGEMENT
         SetFragmentTransactionInConstant()
     }

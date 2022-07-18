@@ -27,7 +27,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         //TOOLBAR
-        ToolbarLogin().show(this,"LOGIN",false,binding.tbToolbarlogin.mtToolbarlogin)
+        ToolbarLogin().show(this,"USET",false,binding.tbToolbarlogin.mtToolbarlogin)
         //FRAGMENT MANAGEMENT
         SetFragmentTransactionInConstant(0)
     }

@@ -23,8 +23,6 @@ class Registro01Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //BUTTONS CLICK LISTENERS
         binding.btnEmail.       setOnClickListener { BtnEmail()     }
-        binding.btnFacebook.    setOnClickListener { BtnFacebook()  }
-        binding.btnGoogle.      setOnClickListener { BtnGoogle()    }
         binding.btnRegresar.    setOnClickListener { BtnRegresar()  }
     }
 
@@ -34,12 +32,6 @@ class Registro01Fragment : Fragment() {
             .replace(R.id.fragmentContainerViewRegistro, Registro02Fragment())
             .addToBackStack("2")
             .commit()
-    }
-    private fun BtnFacebook() {
-
-    }
-    private fun BtnGoogle() {
-
     }
     private fun BtnRegresar() {
         requireActivity().onBackPressed()
