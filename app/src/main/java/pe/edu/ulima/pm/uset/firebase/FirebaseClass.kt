@@ -12,6 +12,7 @@ import com.google.firebase.ktx.Firebase
 class FirebaseClass {
     companion object{
         val auth =  Firebase.auth
+        val db = Firebase.firestore
 
         fun isVerifiedEmailAndSignInWithEmailAndPassword(
             email:String, password: String, context: Context,
@@ -27,23 +28,18 @@ class FirebaseClass {
                         if (it.isSuccessful){
                             //5.Verification: Check if Email has been verified
                             if(auth.currentUser!!.isEmailVerified) {
-                                //TODO *****************************************************************
-                                Firebase.firestore.collection("users").document(updateUI()!!)
+                                //7.Check if uid relates to a document
+                                db.collection("users").document(updateUI()!!)
                                     .get().addOnSuccessListener {
+                                        //8.uid RELATES document
                                         if(it.exists()){
-
-                                        }else{
-
+                                            goToChatActivity()
+                                        }
+                                        //9.uid NOT RELATES document
+                                        else{
+                                            goToCreateProfileActivity()
                                         }
                                     }
-
-
-                                //7.Check if uid relates to a document
-                                //8.uid RELATION document
-                                // *** goToChatActivity()
-                                //9.uid NOT RELATION document
-                                // *** goToCreateProfileActivity()
-                                //TODO *****************************************************************
                             }else{
                                 //6.NOT Verified email
                                 Toast.makeText(context, "Verifique su correo para continuar...", Toast.LENGTH_SHORT).show()
@@ -64,7 +60,7 @@ class FirebaseClass {
             //1.Verification: Not empty fields
             else{
                 if (email.isEmpty())
-                    //Empty Email
+                //Empty Email
                     Toast.makeText(context, "Ingrese un correo", Toast.LENGTH_SHORT).show()
                 else{
                     //Empty password
