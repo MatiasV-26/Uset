@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
 import pe.edu.ulima.pm.uset.R
 import pe.edu.ulima.pm.uset.RegistroActivity
@@ -38,19 +40,20 @@ class Registro02Fragment : Fragment() {
             //Email is not empty
             if(android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                 //Email matches the pattern
-                FirebaseClass.auth.fetchSignInMethodsForEmail(email).addOnSuccessListener {
-                    if(it.signInMethods!=null){
-                        //Email exists
-                        Toast.makeText(requireContext(), "El correo ingresado ya esta registrado", Toast.LENGTH_SHORT).show()
-                    }else{
-                        //Email doesn't exist
-                        RegistroActivity.correo = email
-                        parentFragmentManager.beginTransaction()
-                            .replace(R.id.fragmentContainerViewRegistro, Registro03Fragment())
-                            .addToBackStack("3")
-                            .commit()
+                FirebaseClass.db.collection("users").whereEqualTo("correo",email)
+                    .get().addOnSuccessListener {
+                        if(it.size() == 0){
+                            //Email doesn't exist
+                            RegistroActivity.correo = email
+                            parentFragmentManager.beginTransaction()
+                                .replace(R.id.fragmentContainerViewRegistro, Registro03Fragment())
+                                .addToBackStack("3")
+                                .commit()
+                        }else{
+                            //Email exists
+                            Toast.makeText(requireContext(), "El correo ingresado ya esta registrado", Toast.LENGTH_SHORT).show()
+                        }
                     }
-                }
             }else{
                 //Email doesn't matches the pattern
                 Toast.makeText(requireContext(), "Ingrese un correo valido", Toast.LENGTH_SHORT).show()
