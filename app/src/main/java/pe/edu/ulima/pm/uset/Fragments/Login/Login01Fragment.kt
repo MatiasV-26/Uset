@@ -43,6 +43,7 @@ class Login01Fragment : Fragment() {
         FirebaseClass.signInWithEmailAndPassword(email,password,requireContext())?.addOnCompleteListener(requireActivity()) {
             FirebaseClass.updateUI(requireContext())
             if (it.isSuccessful){
+                requireActivity().finish()
                 startActivity(Intent(requireActivity(), ChatActivity::class.java))
             }
             else {
