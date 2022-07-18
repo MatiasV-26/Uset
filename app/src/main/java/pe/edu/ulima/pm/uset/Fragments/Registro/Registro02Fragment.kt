@@ -41,12 +41,9 @@ class Registro02Fragment : Fragment() {
                 FirebaseClass.auth.fetchSignInMethodsForEmail(email).addOnSuccessListener {
                     if(it.signInMethods!=null){
                         //Email exists
-                        if (it.signInMethods!!.size>0){
-                            Log.e("LISTA",it.signInMethods.toString())
-                        }
+                        Toast.makeText(requireContext(), "El correo ingresado ya esta registrado", Toast.LENGTH_SHORT).show()
                     }else{
                         //Email doesn't exist
-                        Log.e("LISTA","VACIO")
                         RegistroActivity.correo = email
                         parentFragmentManager.beginTransaction()
                             .replace(R.id.fragmentContainerViewRegistro, Registro03Fragment())
