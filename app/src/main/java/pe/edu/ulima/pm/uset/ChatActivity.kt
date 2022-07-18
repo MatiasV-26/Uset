@@ -32,15 +32,18 @@ class ChatActivity : AppCompatActivity() {
 
     //ACTIVITY LIFECYCLE
     override fun onCreate(savedInstanceState: Bundle?) {
-        //VIEW BINDING FOR ACTIVITIES
         super.onCreate(savedInstanceState)
+
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        title = "Chats"
 
         val toggle = ActionBarDrawerToggle(this
             ,binding.drawerMenuLayout
             ,R.string.drawer_open
             ,R.string.drawer_close)
+
         binding.drawerMenuLayout.addDrawerListener(toggle)
         toggle.syncState()
 
@@ -51,17 +54,44 @@ class ChatActivity : AppCompatActivity() {
                 R.id.settings -> pressSettings()
                 R.id.logout -> pressLogout()
             }
+
             binding.drawerMenuLayout.closeDrawer(GravityCompat.START)
             true
         }
-        val navController = findNavController(binding.navView)
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
 
-        //TOOLBAR
-        binding.tbToolbarchat01.mtToolbarlogin.setupWithNavController(navController, appBarConfiguration)
-        ToolbarChat01().show(this,"Chats",true,binding.tbToolbarchat01.mtToolbarlogin)
+
 
         actualizarUsername()
+//        //VIEW BINDING FOR ACTIVITIES
+//        super.onCreate(savedInstanceState)
+//        binding = ActivityChatBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
+//
+//        val toggle = ActionBarDrawerToggle(this
+//            ,binding.drawerMenuLayout
+//            ,R.string.drawer_open
+//            ,R.string.drawer_close)
+//        binding.drawerMenuLayout.addDrawerListener(toggle)
+//        toggle.syncState()
+//
+//        binding.navView.setNavigationItemSelectedListener {
+//            it.setChecked(true)
+//            when(it.itemId){
+//                R.id.add_friend ->pressAddFriend()
+//                R.id.settings -> pressSettings()
+//                R.id.logout -> pressLogout()
+//            }
+//            binding.drawerMenuLayout.closeDrawer(GravityCompat.START)
+//            true
+//        }
+//        val navController = findNavController(binding.navView)
+//        val appBarConfiguration = AppBarConfiguration(navController.graph)
+//
+//        //TOOLBAR
+//        binding.tbToolbarchat01.mtToolbarlogin.setupWithNavController(navController, appBarConfiguration)
+//        ToolbarChat01().show(this,"Chats",true,binding.tbToolbarchat01.mtToolbarlogin)
+//
+//        actualizarUsername()
 
     }
 
