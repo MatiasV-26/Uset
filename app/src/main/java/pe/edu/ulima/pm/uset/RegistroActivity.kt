@@ -18,6 +18,9 @@ class RegistroActivity : AppCompatActivity() {
 
     private val fragmentLoginList: List<Fragment> = listOf(Registro01Fragment())
 
+    companion object{
+        var correo : String? = null
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +28,6 @@ class RegistroActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         title = "...REGISTRO..."
-
         SetFragmentTransactionInConstant()
     }
 

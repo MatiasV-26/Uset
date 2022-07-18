@@ -3,6 +3,7 @@ package pe.edu.ulima.pm.uset.Fragments.Login
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat.startActivity
@@ -21,6 +22,7 @@ class FirebaseClass {
         val auth =  Firebase.auth
         fun createUserWithEmailAndPassword(email:String,password:String,context:Context): Task<AuthResult>? {
             var registered = false
+            Log.i("valor", registered.toString())
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 if(password.length<6){
                     Toast.makeText(context, "La contraseña debe tener 6 caracteres a más", Toast.LENGTH_SHORT).show()

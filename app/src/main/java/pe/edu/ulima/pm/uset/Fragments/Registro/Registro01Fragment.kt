@@ -29,8 +29,12 @@ class Registro01Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentRegistro01Binding.inflate(inflater, container, false)
-        binding.btnIngresar.setOnClickListener { BotonIngresar() }
         return binding.root
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.btnIngresar.setOnClickListener { BotonIngresar() }
+        binding.btnRegresar.setOnClickListener {  }
     }
 
     override fun onDestroyView() {
