@@ -7,10 +7,13 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
+import com.google.firebase.storage.FirebaseStorage
 import pe.edu.ulima.pm.uset.Fragments.CreateProfile.CreateProfile01Fragment
 import pe.edu.ulima.pm.uset.databinding.ActivityCreateProfileBinding
 import pe.edu.ulima.pm.uset.databinding.ActivityGuardarFotoBinding
+import java.util.*
 
 class GuardarFotoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGuardarFotoBinding
@@ -25,6 +28,9 @@ class GuardarFotoActivity : AppCompatActivity() {
             intent.type = "image/*"
             startActivityForResult(intent, 0)
         }
+        binding.btnRegresar.setOnClickListener {
+            SubirFoto()
+        }
     }
     var Foto : Uri? = null
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -36,6 +42,15 @@ class GuardarFotoActivity : AppCompatActivity() {
         }
     }
     private fun SubirFoto(){
+        if (Foto == null) return
+        val nombre = UUID.randomUUID().toString()
+        val referencia = FirebaseStorage.getInstance().getReference("/images/${nombre}")
+        referencia.putFile(Foto!!).addOnSuccessListener {
+            Log.i("Hola", it.metadata?.path.toString())
+            referencia.downloadUrl.addOnSuccessListener {
+                Log.i("Hola2", it.toString())
+            }
+        }
 
     }
 }
