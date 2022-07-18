@@ -6,6 +6,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class FirebaseClass {
@@ -27,6 +28,16 @@ class FirebaseClass {
                             //5.Verification: Check if Email has been verified
                             if(auth.currentUser!!.isEmailVerified) {
                                 //TODO *****************************************************************
+                                Firebase.firestore.collection("users").document(updateUI()!!)
+                                    .get().addOnSuccessListener {
+                                        if(it.exists()){
+
+                                        }else{
+
+                                        }
+                                    }
+
+
                                 //7.Check if uid relates to a document
                                 //8.uid RELATION document
                                 // *** goToChatActivity()

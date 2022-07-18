@@ -9,7 +9,7 @@ data class Usuario (
     var correo : String = "",
     var sexo : String = "",
     var ocupacion : String = "",
-    var friend_code : String = FuncionesRandom.getRandomCode(),
+    var friend_code : String = "",
     var settingsBasicos : Map<String,Boolean> = mapOf(
         "notifications" to true,
         "estadoActividad" to true),

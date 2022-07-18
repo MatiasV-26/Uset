@@ -11,6 +11,7 @@ import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
 import pe.edu.ulima.pm.uset.Models.Usuario
 import pe.edu.ulima.pm.uset.R
 import pe.edu.ulima.pm.uset.databinding.FragmentCreateProfile01Binding
+import pe.edu.ulima.pm.uset.firebase.FuncionesRandom
 
 
 class CreateProfile01Fragment : Fragment() {
@@ -59,11 +60,12 @@ class CreateProfile01Fragment : Fragment() {
         var nombre = binding.tilNombreEditText.text.toString()
         var apellidos = binding.tilApellidosEditText.text.toString()
         var ocupacion = binding.tilOcupacionEditText.text.toString()
+        var friendcode = FuncionesRandom.getRandomCode()
         correo = FirebaseClass.Correo().toString()
         if (nombre.isNotEmpty() &&
             apellidos.isNotEmpty() &&
             ocupacion.isNotEmpty()){
-            var usuario = Usuario(id, nombre, apellidos, correo, ObtenerSexo(), ocupacion)
+            var usuario = Usuario(id, nombre, apellidos, correo, ObtenerSexo(), ocupacion, friend_code = friendcode)
             db.collection("users").document(id).set(
                 usuario)
             BotonEnviar()

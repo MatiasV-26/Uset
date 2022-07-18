@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
+import pe.edu.ulima.pm.uset.Models.ChatRoom
 import pe.edu.ulima.pm.uset.Models.UserChat
 import pe.edu.ulima.pm.uset.databinding.FragmentAddFriendBinding
 import pe.edu.ulima.pm.uset.firebase.FuncionesRandom
@@ -21,7 +22,6 @@ class AddFriendFragment:Fragment() {
     private val binding get() = _binding!!
     private var userID = FirebaseClass.updateUI()
     private val db = Firebase.firestore
-    private var code = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,6 +65,7 @@ class AddFriendFragment:Fragment() {
         binding.buttonRoll.setOnClickListener {
             rollFriendCode()
         }
+
     }
 
     private fun addFriendButtonAction(friendCode: String) {
@@ -92,7 +93,6 @@ class AddFriendFragment:Fragment() {
             .get()
             .addOnSuccessListener {
                 if(it.size()!=0){
-                    println("")
                     Toast.makeText(context
                         ,"Ya es amigo de este usuario"
                         ,Toast.LENGTH_SHORT).show()
@@ -144,24 +144,47 @@ class AddFriendFragment:Fragment() {
     }
 
     private fun addChatWithNewFriend(friendID:String){
-        val name = "Chat de prueba"
+        val IDChat = UUID.randomUUID().toString()
+        var name = "Chat con "
 
-        val newChat = UserChat(
-            UUID.randomUUID().toString(),
-            name,
-            listOf(friendID,userID!!)
+        db.collection("users").document(userID!!).get()
+            .addOnSuccessListener {
+                name = name + it.data!!.get("nombres")
+                val newChatWithUser = UserChat(
+                    id = IDChat,
+                    name = name,
+                    users = listOf(userID!!,friendID)
+                )
+                addToUserChatCollection(friendID,newChatWithUser)
+            }
+
+        db.collection("users").document(friendID).get()
+            .addOnSuccessListener {
+                name = name + it.data!!.get("nombres")
+                val newChatWithUser = UserChat(
+                    id = IDChat,
+                    name = name,
+                    users = listOf(userID!!,friendID)
+                )
+                addToUserChatCollection(userID!!,newChatWithUser)
+            }
+
+        val newChat = ChatRoom(
+            IDChat,
+            users = listOf(friendID,userID!!)
         )
 
-        db.collection("chatRooms").document(newChat.id).set(newChat)
-        db.collection("users").document(userID!!).collection("chats")
-            .document(newChat.id).set(newChat)
-        db.collection("users").document(friendID).collection("chats")
-            .document(newChat.id).set(newChat)
+        db.collection("chatRooms").document(IDChat).set(newChat)
 
     }
 
+    private fun addToUserChatCollection(userID: String,newChat:UserChat){
+        db.collection("users").document(userID!!).collection("chats")
+            .document(newChat.id).set(newChat)
+    }
+
     private fun rollFriendCode() {
-        code = FuncionesRandom.getRandomCode()
+        var code = FuncionesRandom.getRandomCode()
         db.collection("users").whereEqualTo("friend_code",code)
             .get()
             .addOnSuccessListener {
@@ -189,8 +212,6 @@ class AddFriendFragment:Fragment() {
                 println("Error en update de codigo")
             }
     }
-
-
 
     override fun onDetach() {
         super.onDetach()

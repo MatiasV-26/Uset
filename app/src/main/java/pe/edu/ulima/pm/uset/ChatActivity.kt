@@ -2,6 +2,8 @@ package pe.edu.ulima.pm.uset
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -17,6 +19,7 @@ class ChatActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChatBinding
     private val db = Firebase.firestore
+    private val docRef = db.collection("users").document(FirebaseClass.updateUI()!!)
     private val fragmentManager = supportFragmentManager
     private var fragmentTransaction = fragmentManager.beginTransaction()
 
@@ -49,8 +52,19 @@ class ChatActivity : AppCompatActivity() {
             true
         }
 
-        //db.collection("usuarios").
 
+
+        actualizarUsername()
+
+
+
+    }
+
+    private fun actualizarUsername(){
+        docRef.get().addOnSuccessListener {
+            var nombreUser = it.data!!.get("nombres")
+            findViewById<TextView>(R.id.tvUsernameMenu).text = nombreUser.toString()
+        }
     }
 
     private fun pressLogout() {

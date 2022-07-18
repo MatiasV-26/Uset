@@ -11,8 +11,8 @@ class ChatUsersHolder(view:View) :RecyclerView.ViewHolder(view){
 
     fun render(chat: UserChat){
         binding.textNombreUsuarioChat.text = chat.name
-        binding.textUltimoChatHora.text = "TODO"
-        binding.textUltimoChat.text = "TODO"
+        binding.textUltimoChatHora.text = chat.lastMsgDate.toString()
+        binding.textUltimoChat.text = chat.lastMsg
         binding.imageView.setImageResource(R.drawable.download)
     }
 }

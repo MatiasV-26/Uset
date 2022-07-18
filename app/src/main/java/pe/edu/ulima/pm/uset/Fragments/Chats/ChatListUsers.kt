@@ -9,11 +9,14 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
 import pe.edu.ulima.pm.uset.Adapters.ChatUsersAdapter
+import pe.edu.ulima.pm.uset.Adapters.ChatsBtwUsersAdapter
 import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
+import pe.edu.ulima.pm.uset.Models.MessageChat
 import pe.edu.ulima.pm.uset.Models.UserChat
 import pe.edu.ulima.pm.uset.R
 import pe.edu.ulima.pm.uset.databinding.FragmentChatListUsersBinding
@@ -63,13 +66,22 @@ class ChatListUsers : Fragment() {
 
         val userDoc = db.collection("users").document(userID!!)
 
-        userDoc.collection("chats").get()
+        userDoc.collection("chats").orderBy("lastMsgDate", Query.Direction.DESCENDING).get()
             .addOnSuccessListener {
                 val chatList = it.toObjects(UserChat::class.java)
-
                 (binding.recyclerViewChatsUsers.adapter as ChatUsersAdapter).setData(chatList)
             }
 
+        /*userDoc.collection("chats").orderBy("lastMsgDate", Query.Direction.DESCENDING)
+            .addSnapshotListener { chats, error ->
+                if(error == null){
+                    chats?.let {
+                        val listChats = it.toObjects(UserChat::class.java)
+                        (binding.recyclerViewChatsUsers.adapter as ChatUsersAdapter).setData(listChats)
+                    }
+                }
+            }
+*/
     }
 
     private fun chatPressed(userchat: UserChat) {
