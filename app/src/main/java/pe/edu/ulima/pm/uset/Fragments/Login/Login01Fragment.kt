@@ -43,11 +43,16 @@ class Login01Fragment : Fragment() {
     private fun BtnIngresar() {
         val email = binding.tilCorreoEditText.text.toString().trim { it <= ' ' }
         val password = binding.tilIngresarContrasenaEditText.text.toString()
-        FirebaseClass.signInWithEmailAndPassword(email,password,requireContext())?.addOnCompleteListener(requireActivity()) {
+        FirebaseClass.isVerifiedEmailAndSignInWithEmailAndPassword(email,password,requireContext())?.addOnCompleteListener(requireActivity()){
             if (it.isSuccessful){
-                goToChatActivity()
-            }
-            else {
+                if(FirebaseClass.auth.currentUser!!.isEmailVerified) {
+                    Toast.makeText(context, "UserVerified", Toast.LENGTH_SHORT).show()
+                    goToChatActivity()
+                }else{
+                    Toast.makeText(context, "Verifique su correo", Toast.LENGTH_SHORT).show()
+                    FirebaseClass.auth.currentUser!!.sendEmailVerification()
+                }
+            }else{
                 Toast.makeText(context, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
             }
         }

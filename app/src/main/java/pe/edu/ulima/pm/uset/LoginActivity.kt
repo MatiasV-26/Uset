@@ -21,7 +21,6 @@ class LoginActivity : AppCompatActivity() {
     private val fragmentLoginList: List<Fragment> = listOf(Login01Fragment())
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        checkExistanceOfUser()
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -29,17 +28,6 @@ class LoginActivity : AppCompatActivity() {
         SetFragmentTransactionInTop(0)
     }
 
-    private fun checkExistanceOfUser() {
-        if (FirebaseClass.updateUI() != null) {
-            goToChatActivity()
-        } else {
-            Toast.makeText(this, "NO TENEMOS USUARIO :(", Toast.LENGTH_SHORT).show()
-        }
-    }
-    private fun goToChatActivity() {
-        this.finish()
-        startActivity(Intent(this, ChatActivity::class.java))
-    }
     private fun SetFragmentTransactionInTop(fragment: Int) {
         fragmentTransaction
             .add(R.id.fragmentContainerViewLogin, fragmentLoginList[fragment],"1")

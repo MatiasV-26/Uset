@@ -20,16 +20,11 @@ import pe.edu.ulima.pm.uset.ChatActivity
 class FirebaseClass {
     companion object{
         val auth =  Firebase.auth
-        fun createUserWithEmailAndPassword(email:String,password:String,context:Context): Task<AuthResult>? {
-            var registered = false
-            Log.i("valor", registered.toString())
+        fun isVerifiedEmailAndSignInWithEmailAndPassword(email:String,password: String,context: Context):Task<AuthResult>?{
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                if(password.length<6){
-                    Toast.makeText(context, "La contraseña debe tener 6 caracteres a más", Toast.LENGTH_SHORT).show()
-                }else{
-                    return auth.createUserWithEmailAndPassword(email, password)
-                }
-            }else{
+                return auth.signInWithEmailAndPassword(email, password)
+            }
+            else{
                 if (email.isEmpty())
                     Toast.makeText(context, "Ingrese un correo", Toast.LENGTH_SHORT).show()
                 else
@@ -37,11 +32,14 @@ class FirebaseClass {
             }
             return null
         }
-        fun signInWithEmailAndPassword(email:String, password:String, context: Context): Task<AuthResult>? {
+        fun createUserWithEmailAndPassword(email:String,password:String,context:Context): Task<AuthResult>? {
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                return auth.signInWithEmailAndPassword(email, password)
-            }
-            else{
+                if(password.length<6){
+                    Toast.makeText(context, "La contraseña debe tener 6 caracteres a más", Toast.LENGTH_SHORT).show()
+                }else{
+                    return auth.createUserWithEmailAndPassword(email, password)
+                }
+            }else{
                 if (email.isEmpty())
                     Toast.makeText(context, "Ingrese un correo", Toast.LENGTH_SHORT).show()
                 else
