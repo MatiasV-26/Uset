@@ -1,5 +1,6 @@
 package pe.edu.ulima.pm.uset.Fragments.Registro
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import pe.edu.ulima.pm.uset.ChatActivity
+import pe.edu.ulima.pm.uset.CreateProfileActivity
 import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
 import pe.edu.ulima.pm.uset.R
 import pe.edu.ulima.pm.uset.RegistroActivity
@@ -24,12 +27,7 @@ class Registro04Fragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentRegistro04Binding.inflate(inflater, container, false)
         return binding.root
     }
@@ -47,17 +45,28 @@ class Registro04Fragment : Fragment() {
         if (password != password2){
             Toast.makeText(context, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
         }else{
-            FirebaseClass.createUserWithEmailAndPassword(RegistroActivity.correo!!,password,requireContext())?.addOnCompleteListener(requireActivity()) {
+            FirebaseClass.isVerifiedEmailAndSignInWithEmailAndPassword(RegistroActivity.correo!!,password,requireContext())?.addOnCompleteListener(requireActivity()){
                 if (it.isSuccessful){
-                    Toast.makeText(context, "Registrado!", Toast.LENGTH_SHORT).show()
+                    if(FirebaseClass.auth.currentUser!!.isEmailVerified) {
+                        Toast.makeText(context, "UserVerified", Toast.LENGTH_SHORT).show()
+                        goToChatActivity()
+                    }else{
+                        Toast.makeText(context, "Verifique su correo", Toast.LENGTH_SHORT).show()
+                        FirebaseClass.auth.currentUser!!.sendEmailVerification()
+                    }
                     BotonEnviar()
                 }else{
-                    Toast.makeText(context, "Correo ya utilizado", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
                 }
             }
         }
-
     }
+
+    private fun goToChatActivity() {
+        requireActivity().finish()
+        startActivity(Intent(requireActivity(), CreateProfileActivity::class.java))
+    }
+
     //TODO: OnViewCreated Functions ****************************************************************
 
     override fun onDestroyView() {
