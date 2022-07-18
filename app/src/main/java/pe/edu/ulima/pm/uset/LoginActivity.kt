@@ -3,8 +3,12 @@ package pe.edu.ulima.pm.uset
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import pe.edu.ulima.pm.uset.Fragments.Login.Login01Fragment
 import pe.edu.ulima.pm.uset.databinding.ActivityLoginBinding
+import pe.edu.ulima.pm.uset.toolbar.ToolbarChat01
 import pe.edu.ulima.pm.uset.toolbar.ToolbarLogin
 
 class LoginActivity : AppCompatActivity() {
@@ -22,8 +26,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //TITLE
-        ToolbarLogin().show(this,"...USET...",false,binding.tbToolbarlogin.mtToolbarlogin)
+        //TOOLBAR
+        ToolbarLogin().show(this,"LOGIN",false,binding.tbToolbarlogin.mtToolbarlogin)
         //FRAGMENT MANAGEMENT
         SetFragmentTransactionInConstant(0)
     }
