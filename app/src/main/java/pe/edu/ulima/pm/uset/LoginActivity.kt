@@ -19,7 +19,6 @@ class LoginActivity : AppCompatActivity() {
     private val fragmentTransaction = fragmentManager.beginTransaction()
     private val fragmentLoginList: List<Fragment> = listOf(Login01Fragment())
 
-
     //ACTIVITY LIFECYCLE
     override fun onCreate(savedInstanceState: Bundle?) {
         //VIEW BINDING FOR ACTIVITIES

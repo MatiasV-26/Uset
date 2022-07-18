@@ -21,29 +21,26 @@ import pe.edu.ulima.pm.uset.databinding.Toolbarchat01Binding
 import pe.edu.ulima.pm.uset.toolbar.ToolbarChat01
 
 class ChatActivity : AppCompatActivity() {
-
+    //VIEW BINDING FOR ACTIVITIESs
     private lateinit var binding: ActivityChatBinding
+    //DATABASE
     private val db = Firebase.firestore
     private val docRef = db.collection("users").document(FirebaseClass.updateUI()!!)
+    //FRAGMENT MANAGEMENT
     private val fragmentManager = supportFragmentManager
     private var fragmentTransaction = fragmentManager.beginTransaction()
 
-
+    //ACTIVITY LIFECYCLE
     override fun onCreate(savedInstanceState: Bundle?) {
+        //VIEW BINDING FOR ACTIVITIES
         super.onCreate(savedInstanceState)
-
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-
-        title = "Chats"
 
         val toggle = ActionBarDrawerToggle(this
             ,binding.drawerMenuLayout
             ,R.string.drawer_open
             ,R.string.drawer_close)
-
         binding.drawerMenuLayout.addDrawerListener(toggle)
         toggle.syncState()
 
@@ -54,23 +51,17 @@ class ChatActivity : AppCompatActivity() {
                 R.id.settings -> pressSettings()
                 R.id.logout -> pressLogout()
             }
-
             binding.drawerMenuLayout.closeDrawer(GravityCompat.START)
             true
         }
-
-
-
         val navController = findNavController(binding.navView)
         val appBarConfiguration = AppBarConfiguration(navController.graph)
+
+        //TOOLBAR
         binding.tbToolbarchat01.mtToolbarlogin.setupWithNavController(navController, appBarConfiguration)
         ToolbarChat01().show(this,"Chats",true,binding.tbToolbarchat01.mtToolbarlogin)
 
-
-
         actualizarUsername()
-
-
 
     }
 
@@ -101,14 +92,6 @@ class ChatActivity : AppCompatActivity() {
         title = "Agregar amigos"
     }
 
-    override fun onResume() {
-        super.onResume()
-        var a = binding.navView.checkedItem
-        if(a!=null){
-            a.setChecked(false)
-        }
-    }
-
     override fun onBackPressed() {
         if(binding.drawerMenuLayout.isDrawerOpen(GravityCompat.START)){
             binding.drawerMenuLayout.closeDrawer(GravityCompat.START)
@@ -132,5 +115,13 @@ class ChatActivity : AppCompatActivity() {
             R.id.option_two -> Toast.makeText(this, "ADD FRIEND", Toast.LENGTH_SHORT).show()
         }
         return true
+    }
+
+    override fun onResume() {
+        super.onResume()
+        var a = binding.navView.checkedItem
+        if(a!=null){
+            a.setChecked(false)
+        }
     }
 }
