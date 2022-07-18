@@ -81,7 +81,7 @@
         android:fontFamily="@font/bebasneue_regular"
 
         android:gravity="center"
-        android:text="Regresar"
+        android:text="Confirmar"
         android:textSize="32dp"
 
         android:textStyle="bold"
