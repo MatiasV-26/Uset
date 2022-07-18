@@ -1,11 +1,14 @@
 package pe.edu.ulima.pm.uset.Fragments.Login
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -15,6 +18,8 @@ import com.facebook.login.LoginResult
 import com.google.firebase.auth.FacebookAuthProvider
 import pe.edu.ulima.pm.uset.ChatActivity
 import pe.edu.ulima.pm.uset.CreateProfileActivity
+import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass.Companion.updateUI
+import pe.edu.ulima.pm.uset.R
 import pe.edu.ulima.pm.uset.RegistroActivity
 import pe.edu.ulima.pm.uset.databinding.FragmentLogin01Binding
 
@@ -44,6 +49,16 @@ class Login01Fragment : Fragment() {
     //OnViewCreated Functions ON CLICK LISTENERS ***************************************************
     private fun TvOlvideMiContrasena() {
         Toast.makeText(context, "Implementacion futura ...", Toast.LENGTH_SHORT).show()
+        val builder = AlertDialog.Builder(activity)
+        builder.setTitle("Recuperar Contraseña")
+        val view = layoutInflater.inflate(R.layout.dialog_forgot_password, null)
+        builder.setView(view)
+        val correo = view.findViewById<EditText>(R.id.et_correo)
+        builder.setPositiveButton("Reestablecer", DialogInterface.OnClickListener { _, _ ->
+            ContraseñaOlvidada(correo)
+        })
+        builder.setNegativeButton("Cerrrar", DialogInterface.OnClickListener { _, _ ->  })
+        builder.show()
     }
     private fun BtnIngresar() {
         //FIREBASE CLASS IMPLEMENTATION
@@ -113,5 +128,14 @@ class Login01Fragment : Fragment() {
         super.onDestroyView()
         //VIEW BINDING FOR FRAGMENTS
         _binding = null
+    }
+    private fun ContraseñaOlvidada(correo : EditText){
+        FirebaseClass.auth.sendPasswordResetEmail(correo.toString())
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    Toast.makeText(activity,"Email sent.",Toast.LENGTH_SHORT).show()
+                }
+            }
+
     }
 }

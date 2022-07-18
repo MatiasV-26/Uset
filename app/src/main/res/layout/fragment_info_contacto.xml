@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_foto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/download"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tv_nombres"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="20dp"
+        android:fontFamily="@font/rubik_variablefont_wght"
+        app:layout_constraintVertical_bias="0.0"
+        android:gravity="start"
+        android:text="Nombres"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_foto" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_nombre"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:textSize="16sp"
+        android:hint="Nombre"
+        android:gravity="start"
+        android:fontFamily="@font/rubik_variablefont_wght"
+
+        android:inputType="textEmailAddress"
+
+        app:layout_constraintTop_toBottomOf="@id/tv_nombres"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="0dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/til_nombreEditText"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_variablefont_wght"
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_apellidos"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="20dp"
+        android:fontFamily="@font/rubik_variablefont_wght"
+        android:gravity="start"
+        android:text="Apellidos"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_nombre"
+        app:layout_constraintVertical_bias="0.0" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_apellidos"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:textSize="16sp"
+        android:hint="Apellido"
+        android:gravity="start"
+        android:fontFamily="@font/rubik_variablefont_wght"
+
+        android:inputType="textEmailAddress"
+
+        app:layout_constraintTop_toBottomOf="@id/tv_apellidos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="0dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/til_apellidosEditText"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_variablefont_wght"
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/tv_sexo"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="20dp"
+        android:fontFamily="@font/rubik_variablefont_wght"
+        android:gravity="start"
+        android:text="Sexo"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_apellidos"
+        app:layout_constraintVertical_bias="0.0" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_sexo"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:textSize="16sp"
+        android:hint="Sexo"
+        android:gravity="start"
+        android:fontFamily="@font/rubik_variablefont_wght"
+
+        android:inputType="textEmailAddress"
+
+        app:layout_constraintTop_toBottomOf="@id/tv_sexo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="0dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/til_sexoEditText"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_variablefont_wght"
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/tv_ocupacion"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="20dp"
+        android:fontFamily="@font/rubik_variablefont_wght"
+        android:gravity="start"
+        android:text="Ocupación"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_sexo"
+        app:layout_constraintVertical_bias="0.0" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_ocupacion"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:textSize="16sp"
+        android:hint="Ocupación"
+        android:gravity="start"
+        android:fontFamily="@font/rubik_variablefont_wght"
+
+        android:inputType="textEmailAddress"
+
+        app:layout_constraintTop_toBottomOf="@id/tv_ocupacion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="0dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/til_ocupacionEditText"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_variablefont_wght"
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/tv_correo"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="20dp"
+        android:fontFamily="@font/rubik_variablefont_wght"
+        android:gravity="start"
+        android:text="Correo"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_ocupacion"
+        app:layout_constraintVertical_bias="0.0" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_correo"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:textSize="16sp"
+        android:hint="Correo"
+        android:gravity="start"
+        android:fontFamily="@font/rubik_variablefont_wght"
+
+        android:inputType="textEmailAddress"
+
+        app:layout_constraintTop_toBottomOf="@id/tv_correo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="0dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/til_correoEditText"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_variablefont_wght"
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/tv_tipo"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="20dp"
+        android:fontFamily="@font/rubik_variablefont_wght"
+        app:layout_constraintVertical_bias="0.0"
+        android:gravity="start"
+        android:text="Tipo"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_correo" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_tipo"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:textSize="16sp"
+        android:hint="Tipo"
+        android:gravity="start"
+        android:fontFamily="@font/rubik_variablefont_wght"
+
+        android:inputType="textEmailAddress"
+
+        app:layout_constraintTop_toBottomOf="@id/tv_tipo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="0dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/til_tipoEditText"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_variablefont_wght"
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_email"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/bebasneue_regular"
+
+        android:gravity="center"
+        android:text="Correo electronico"
+        android:textSize="32dp"
+
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

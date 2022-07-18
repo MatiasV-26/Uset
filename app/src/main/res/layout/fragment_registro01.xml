@@ -42,9 +42,9 @@
         android:text="Para realizar su registro deberá utilizar un correo electrónico, cuenta de Facebook o Google."
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btn_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btn_ingresar"
         app:layout_constraintTop_toBottomOf="@+id/tv_registro" />
 
     <com.google.android.material.button.MaterialButton
