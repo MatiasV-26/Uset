@@ -1,5 +1,5 @@
 package pe.edu.ulima.pm.uset.Fragments.Login
-import android.app.Application
+
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,7 +10,6 @@ import android.widget.Toast
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
-import com.facebook.appevents.AppEventsLogger
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.firebase.auth.FacebookAuthProvider
@@ -45,7 +44,7 @@ class Login01Fragment : Fragment() {
         val email = binding.tilCorreoEditText.text.toString().trim { it <= ' ' }
         val password = binding.tilIngresarContrasenaEditText.text.toString()
         FirebaseClass.signInWithEmailAndPassword(email,password,requireContext())?.addOnCompleteListener(requireActivity()) {
-            FirebaseClass.updateUI(requireContext())
+
             if (it.isSuccessful){
                 requireActivity().finish()
                 startActivity(Intent(requireActivity(), ChatActivity::class.java))
@@ -98,7 +97,11 @@ class Login01Fragment : Fragment() {
     override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseClass.updateUI(requireContext())
+        if (FirebaseClass.updateUI() != null){
+            Toast.makeText(requireActivity(), "CONFIRMO, TENEMOS USUARIO", Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(requireActivity(), "NO TENEMOS USUARIO :(", Toast.LENGTH_SHORT).show()
+        }
     }
     override fun onDestroyView() {
         super.onDestroyView()

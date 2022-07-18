@@ -50,15 +50,8 @@ class FirebaseClass {
         fun signInWithCredential(credential:AuthCredential,context:Context): Task<AuthResult>?{
             return auth.signInWithCredential(credential)
         }
-        fun updateUI(context:Context){
-            val user = auth.currentUser
-            if (user != null) {
-                Toast.makeText(context, "FUNCION UPDATE UI USUARIO SIGNED IN> $user", Toast.LENGTH_SHORT).show()
-                // User is signed in
-            } else {
-                Toast.makeText(context, "FUNCION UPDATE UI USUARIO NOT SIGNED IN> " + user.toString(), Toast.LENGTH_SHORT).show()
-                // No user is signed in
-            }
+        fun updateUI():String? {
+            return auth.currentUser?.uid
         }
     }
 }

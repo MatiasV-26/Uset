@@ -21,4 +21,6 @@
     <string name="facebook_app_id">2242392162585231</string>
     <string name="fb_login_protocol_scheme">fb2242392162585231</string>
     <string name="facebook_client_token">95726a23866d0ac78652feb9e1eb2458</string>
+
+    <string name="prefs_file">pe.edu.ulima.pm.uset.prefs.file</string>
 </resources>
