@@ -29,7 +29,7 @@
 
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_siguiente"
+        android:id="@+id/btn_foto"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_siguiente"
+        app:layout_constraintTop_toBottomOf="@+id/btn_foto"
         app:layout_constraintVertical_bias="0.0"/>
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_regresar"
@@ -97,7 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/download"
-        app:layout_constraintBottom_toTopOf="@+id/btn_siguiente"
+        app:layout_constraintBottom_toTopOf="@+id/btn_foto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_ValidarCorreo" />

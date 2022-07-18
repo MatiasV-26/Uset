@@ -1,5 +1,6 @@
 package pe.edu.ulima.pm.uset.Fragments.CreateProfile
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
+import pe.edu.ulima.pm.uset.ChatActivity
 import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
+import pe.edu.ulima.pm.uset.GuardarFotoActivity
 import pe.edu.ulima.pm.uset.Models.Usuario
 import pe.edu.ulima.pm.uset.R
 import pe.edu.ulima.pm.uset.databinding.FragmentCreateProfile01Binding
@@ -68,7 +71,7 @@ class CreateProfile01Fragment : Fragment() {
             var usuario = Usuario(id, nombre, apellidos, correo, ObtenerSexo(), ocupacion, friend_code = friendcode)
             db.collection("users").document(id).set(
                 usuario)
-            BotonEnviar()
+            goToChatActivity()
         }else{
             Toast.makeText(context, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show()
         }
@@ -79,6 +82,10 @@ class CreateProfile01Fragment : Fragment() {
             .replace(R.id.fragmentContainerViewCreateProfile, CreateProfile02Fragment(),"Create Profile 2")
             .addToBackStack("2")
             .commit()
+    }
+    private fun goToChatActivity() {
+        requireActivity().finish()
+        startActivity(Intent(requireActivity(), GuardarFotoActivity::class.java))
     }
 
 
