@@ -46,14 +46,19 @@ class Login01Fragment : Fragment() {
         FirebaseClass.signInWithEmailAndPassword(email,password,requireContext())?.addOnCompleteListener(requireActivity()) {
 
             if (it.isSuccessful){
-                requireActivity().finish()
-                startActivity(Intent(requireActivity(), ChatActivity::class.java))
+                goToChatActivity()
             }
             else {
                 Toast.makeText(context, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
             }
         }
     }
+
+    private fun goToChatActivity() {
+        requireActivity().finish()
+        startActivity(Intent(requireActivity(), ChatActivity::class.java))
+    }
+
     private fun BtnFacebook() {
         Toast.makeText(context, "BtnFacebook", Toast.LENGTH_SHORT).show()
         //TODO
@@ -98,7 +103,7 @@ class Login01Fragment : Fragment() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.a
         if (FirebaseClass.updateUI() != null){
-            Toast.makeText(requireActivity(), "CONFIRMO, TENEMOS USUARIO", Toast.LENGTH_SHORT).show()
+            goToChatActivity()
         }else{
             Toast.makeText(requireActivity(), "NO TENEMOS USUARIO :(", Toast.LENGTH_SHORT).show()
         }
