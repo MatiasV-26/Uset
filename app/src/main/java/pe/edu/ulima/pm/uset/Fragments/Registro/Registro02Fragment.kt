@@ -1,6 +1,7 @@
 package pe.edu.ulima.pm.uset.Fragments.Registro
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,9 @@ import kotlinx.coroutines.launch
 import pe.edu.ulima.pm.uset.ChatActivity
 import pe.edu.ulima.pm.uset.Fragments.CreateProfile.CreateProfile01Fragment
 import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
+import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass.Companion.auth
+import pe.edu.ulima.pm.uset.R
+import pe.edu.ulima.pm.uset.RegistroActivity
 import pe.edu.ulima.pm.uset.databinding.FragmentRegistro02Binding
 import kotlin.text.Typography.registered
 
@@ -28,24 +32,10 @@ class Registro02Fragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnEnviar.setOnClickListener { btnEnviar() }
+        binding.btnEnviar.setOnClickListener { BotonEnviar() }
     }
 
-    //TODO: OnViewCreated Functions ****************************************************************
-    private fun btnEnviar() {
-        val email = binding.tilCorreoEditText.text.toString().trim { it <= ' ' }
-        //val password = binding.tilIngresarContrasenaEditText.text.toString()
-        val password = "123"
-        FirebaseClass.createUserWithEmailAndPassword(email,password,requireContext())?.addOnCompleteListener(requireActivity()) {
-            if (it.isSuccessful){
-                Toast.makeText(context, "Registrado!", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(requireActivity(), CreateProfile01Fragment::class.java))
-            }else{
-                Toast.makeText(context, "Ingrese una contraseña", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-    //TODO: OnViewCreated Functions ****************************************************************
+
 
     override fun onStart() {
         super.onStart()
@@ -55,5 +45,12 @@ class Registro02Fragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+    private fun BotonEnviar() {
+        RegistroActivity.correo = binding.tilCorreoEditText.text.toString().trim { it <= ' ' }
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerViewRegistro, Registro03Fragment(),"registro 3")
+            .addToBackStack("3")
+            .commit()
     }
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import pe.edu.ulima.pm.uset.Fragments.Login.Login01Fragment
+import pe.edu.ulima.pm.uset.Fragments.Registro.Registro01Fragment
 import pe.edu.ulima.pm.uset.Fragments.Registro.Registro02Fragment
 import pe.edu.ulima.pm.uset.databinding.ActivityLoginBinding
 import pe.edu.ulima.pm.uset.databinding.ActivityRegistroBinding
@@ -15,23 +16,24 @@ class RegistroActivity : AppCompatActivity() {
     private val fragmentManager = supportFragmentManager
     private val fragmentTransaction = fragmentManager.beginTransaction()
 
-    private val fragmentLoginList: List<Fragment> = listOf(Registro02Fragment())
+    private val fragmentLoginList: List<Fragment> = listOf(Registro01Fragment())
 
+    companion object{
+        var correo : String? = null
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegistroBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        title = "...USET..."
-
-        SetFragmentTransactionInTop(0)
+        title = "...REGISTRO..."
+        SetFragmentTransactionInConstant()
     }
 
-    private fun SetFragmentTransactionInTop(fragment: Int) {
+    private fun SetFragmentTransactionInConstant() {
         fragmentTransaction
-            .add(R.id.fragmentContainerViewLogin, fragmentLoginList[fragment],"1")
-            .addToBackStack("dasdasd")
+            .add(R.id.fragmentContainerViewRegistro, fragmentLoginList[0],"1")
             .commit()
     }
 }

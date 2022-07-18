@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import pe.edu.ulima.pm.uset.Fragments.Chats.ChatBtwUsers
+import pe.edu.ulima.pm.uset.Models.UserChat
 import pe.edu.ulima.pm.uset.R
 import pe.edu.ulima.pm.uset.databinding.FragmentLogin01Binding
 import pe.edu.ulima.pm.uset.databinding.FragmentRegistro01Binding
@@ -29,10 +31,20 @@ class Registro01Fragment : Fragment() {
         _binding = FragmentRegistro01Binding.inflate(inflater, container, false)
         return binding.root
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.btnIngresar.setOnClickListener { BotonIngresar() }
+        binding.btnRegresar.setOnClickListener {  }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
+    private fun BotonIngresar() {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerViewRegistro, Registro02Fragment(),"registro 2")
+            .addToBackStack("2")
+            .commit()
+    }
 }

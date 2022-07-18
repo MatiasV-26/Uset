@@ -1,11 +1,15 @@
 package pe.edu.ulima.pm.uset.Fragments.Registro
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
 import pe.edu.ulima.pm.uset.R
+import pe.edu.ulima.pm.uset.RegistroActivity
 import pe.edu.ulima.pm.uset.databinding.FragmentRegistro03Binding
 import pe.edu.ulima.pm.uset.databinding.FragmentRegistro04Binding
 
@@ -28,10 +32,36 @@ class Registro04Fragment : Fragment() {
         _binding = FragmentRegistro04Binding.inflate(inflater, container, false)
         return binding.root
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.btnEnviar.setOnClickListener {
+            Toast.makeText(context, RegistroActivity.correo, Toast.LENGTH_SHORT).show()
+            btnEnviar()
+        }
+    }
+    //TODO: OnViewCreated Functions ****************************************************************
+    private fun btnEnviar() {
+        val password = binding.tilContraseAEditText.text.toString()
+        val password2 = binding.tilContraseA2EditText.text.toString()
+        if (password != password2){
+            Toast.makeText(context, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
+        }else{
+            FirebaseClass.createUserWithEmailAndPassword(RegistroActivity.correo!!,password,requireContext())?.addOnCompleteListener(requireActivity()) {
+                if (it.isSuccessful){
+                    Toast.makeText(context, "Registrado!", Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(context, "Correo ya utilizado", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+    }
+    //TODO: OnViewCreated Functions ****************************************************************
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 
 }
