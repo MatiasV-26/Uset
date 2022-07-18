@@ -15,6 +15,7 @@ import com.facebook.login.LoginResult
 import com.google.firebase.auth.FacebookAuthProvider
 import pe.edu.ulima.pm.uset.ChatActivity
 import pe.edu.ulima.pm.uset.CreateProfileActivity
+import pe.edu.ulima.pm.uset.RegistroActivity
 import pe.edu.ulima.pm.uset.databinding.FragmentLogin01Binding
 
 class Login01Fragment : Fragment() {
@@ -100,7 +101,7 @@ class Login01Fragment : Fragment() {
         startActivity(Intent(requireActivity(), CreateProfileActivity::class.java))
     }
     private fun goToRegistroActivity() {
-        startActivity(Intent(requireActivity(), ChatActivity::class.java))
+        startActivity(Intent(requireActivity(), RegistroActivity::class.java))
     }
 
     //ACTIVITY LIFECYCLE
