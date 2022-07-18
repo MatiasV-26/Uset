@@ -109,7 +109,7 @@ class ChatActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_contextual01,menu)
-        return super.onCreateOptionsMenu(menu)
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -117,6 +117,6 @@ class ChatActivity : AppCompatActivity() {
             R.id.option_one -> Toast.makeText(this, "ADD FRIEND", Toast.LENGTH_SHORT).show()
             R.id.option_two -> Toast.makeText(this, "ADD FRIEND", Toast.LENGTH_SHORT).show()
         }
-        return super.onOptionsItemSelected(item)
+        return true
     }
 }
