@@ -33,7 +33,7 @@ class GuardarFotoActivity : AppCompatActivity() {
         binding.btnRegresar.setOnClickListener {
             guardarFoto()
         }
-        binding.btnContinuar.setOnClickListener {
+        binding.btnOmitir.setOnClickListener {
             goToChatActivity()
         }
 
