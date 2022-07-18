@@ -2,15 +2,12 @@ package pe.edu.ulima.pm.uset
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import androidx.fragment.app.Fragment
 import com.google.firebase.storage.FirebaseStorage
-import pe.edu.ulima.pm.uset.Fragments.CreateProfile.CreateProfile01Fragment
 import pe.edu.ulima.pm.uset.Fragments.Login.FirebaseClass
 import pe.edu.ulima.pm.uset.databinding.ActivityCreateProfileBinding
 import pe.edu.ulima.pm.uset.databinding.ActivityGuardarFotoBinding
