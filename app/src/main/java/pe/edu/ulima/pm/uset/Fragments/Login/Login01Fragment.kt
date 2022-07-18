@@ -96,7 +96,7 @@ class Login01Fragment : Fragment() {
     }
     override fun onStart() {
         super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
+        // Check if user is signed in (non-null) and update UI accordingly.a
         if (FirebaseClass.updateUI() != null){
             Toast.makeText(requireActivity(), "CONFIRMO, TENEMOS USUARIO", Toast.LENGTH_SHORT).show()
         }else{
