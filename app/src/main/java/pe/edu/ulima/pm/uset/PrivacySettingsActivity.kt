@@ -1,12 +1,13 @@
 package pe.edu.ulima.pm.uset
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
-import pe.edu.ulima.pm.uset.Fragments.Settings.PrivacySettingsFragment
+import pe.edu.ulima.pm.uset.Fragments.Settings.privacy.PrivacySettingsFragment
 import pe.edu.ulima.pm.uset.databinding.ActivityPrivacySettingsBinding
 
 class PrivacySettingsActivity: AppCompatActivity(){
+
+    private var numTransactionsFragments = 0
 
     private lateinit var binding : ActivityPrivacySettingsBinding
 
@@ -18,14 +19,27 @@ class PrivacySettingsActivity: AppCompatActivity(){
 
         title="Privacidad"
 
+        /*numTransactionsFragments += 1
         supportFragmentManager.beginTransaction()
-            .add(R.id.fcwPrivacySettings,PrivacySettingsFragment())
+            .add(R.id.fcwPrivacySettings, PrivacySettingsFragment())
             .addToBackStack("settings1")
-            .commit()
+            .commit()*/
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
-        this.finish()
+        if (numTransactionsFragments == 1){
+            this.finish()
+        }else{
+            super.onBackPressed()
+            //minNumTransactions()
+        }
     }
+
+    /*public fun addNumTransactions(){
+        numTransactionsFragments += 1
+    }
+
+    protected fun minNumTransactions(){
+        numTransactionsFragments -= 1
+    }*/
 }

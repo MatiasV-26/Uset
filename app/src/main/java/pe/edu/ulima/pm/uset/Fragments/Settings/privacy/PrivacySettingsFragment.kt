@@ -1,10 +1,12 @@
-package pe.edu.ulima.pm.uset.Fragments.Settings
+package pe.edu.ulima.pm.uset.Fragments.Settings.privacy
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import pe.edu.ulima.pm.uset.PrivacySettingsActivity
+import pe.edu.ulima.pm.uset.R
 import pe.edu.ulima.pm.uset.databinding.FragmentPrivacySettingsBinding
 
 class PrivacySettingsFragment:Fragment(){
@@ -29,6 +31,10 @@ class PrivacySettingsFragment:Fragment(){
 
         binding.tvHideInfoToOptions.setOnClickListener{onHidePersonalInfoPressed() }
 
+        binding.conlayHideInfoFriends.setOnClickListener { onConfigPrivateData(true) }
+
+        binding.conlayHideInfoContacts.setOnClickListener { onConfigPrivateData(false) }
+
         binding.ivHideInfoToArrow.setOnClickListener{onHidePersonalInfoPressed() }
 
     }
@@ -43,6 +49,14 @@ class PrivacySettingsFragment:Fragment(){
             binding.conlayHideInfoFriends.visibility = View.GONE
             binding.ivHideInfoToArrow.rotation = 0f
         }
+    }
+
+    private fun onConfigPrivateData (isFriend : Boolean){
+        //(requireActivity() as PrivacySettingsActivity).addNumTransactions()
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fcwPrivacySettings, PrivacySettingsFragment2(isFriend))
+            .addToBackStack("part2Privacy")
+            .commit()
     }
 
 }

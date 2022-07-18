@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+
+        android:id="@+id/btngrpSex"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChangeSex"
+        app:singleSelection="true">
+
+        <Button
+            android:id="@+id/btnHombre"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hombre" />
+
+        <Button
+            android:id="@+id/btnMujer"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mujer" />
+
+        <Button
+            android:id="@+id/btnOtro"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Otro" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <TextView
+        android:id="@+id/tvChangeName"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="20dp"
+
+        android:fontFamily="@font/rubik_variablefont_wght"
+        android:gravity="start"
+        android:text="Nombre"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilChangeName"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="5dp"
+        android:fontFamily="@font/rubik_variablefont_wght"
+
+        android:gravity="start"
+
+        android:hint="Nombre..."
+        android:inputType="textEmailAddress"
+        android:textSize="16sp"
+
+        app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
+        app:layout_constraintEnd_toStartOf="@+id/ivChangeNameIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvChangeName">>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tilCorreoEditText"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_variablefont_wght"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilChangeJob"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="5dp"
+        android:fontFamily="@font/rubik_variablefont_wght"
+
+        android:gravity="start"
+
+        android:hint="Ocupación..."
+        android:inputType="textEmailAddress"
+        android:textSize="16sp"
+
+        app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
+        app:layout_constraintEnd_toStartOf="@+id/ivChangeNameIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChangeJob">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tilChangeJobEditText"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_variablefont_wght"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_enviar"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/bebasneue_regular"
+        android:gravity="center"
+
+        android:text="Cancelar"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline9"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_regresar"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/bebasneue_regular"
+        android:gravity="center"
+
+        android:text="Regresar"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline9" />
+
+    <ImageView
+        android:id="@+id/ivChangeNameIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChangeName"
+        app:srcCompat="@drawable/edit_pencil_icon" />
+
+    <ImageView
+        android:id="@+id/ivChangeLastNameIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChangeLastName"
+        app:srcCompat="@drawable/edit_pencil_icon" />
+
+    <ImageView
+        android:id="@+id/ivChangeLastNameIcon2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChangeJob"
+        app:srcCompat="@drawable/edit_pencil_icon" />
+
+    <TextView
+        android:id="@+id/tvChangeLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="16dp"
+        android:gravity="start"
+        android:text="Apellidos"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilChangeName" />
+
+    <TextView
+        android:id="@+id/tvChangeSex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="16dp"
+        android:gravity="start"
+        android:text="Sexo"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilChangeLastName" />
+
+    <TextView
+        android:id="@+id/tvChangeJob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="16dp"
+        android:gravity="start"
+        android:text="Ocupación"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btngrpSex" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilChangeLastName"
+
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginVertical="5sp"
+        android:fontFamily="@font/rubik_variablefont_wght"
+
+        android:gravity="start"
+        android:hint="Apellidos..."
+        android:textSize="16sp"
+
+        app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
+        app:layout_constraintEnd_toStartOf="@+id/ivChangeLastNameIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChangeLastName">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tilChangeLastNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_variablefont_wght" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
